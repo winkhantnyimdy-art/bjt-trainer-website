@@ -1,0 +1,39 @@
+# Netlify deploy exclusion list
+#
+# Netlify publishes its publish directory verbatim and does NOT honour
+# .gitignore, so development-only files must be excluded here explicitly.
+#
+# Goal: publish only the static site that visitors need.
+#   index.html, privacy.html, css/, js/, assets/
+#
+# Nothing here is a security credential - the release keystore, key.properties
+# and any other signing material live in the separate Android repository and
+# must never be copied into this one. This file exists so the QA scripts and
+# repo notes are not served as part of the public site.
+
+# Development-only QA and asset-generation scripts.
+tools/
+
+# Repository and deployment notes. Not part of the site.
+README.md
+assets/screenshots/README.md
+
+# Git and deploy marker files.
+.gitattributes
+.gitignore
+.nojekyll
+.netlifyignore
+netlify.toml
+
+# Never commit these, but exclude them defensively all the same.
+downloads/
+.qa/
+out/
+node_modules/
+*.log
+*.jks
+*.keystore
+key.properties
+keystore.properties
+.env
+.env.*
