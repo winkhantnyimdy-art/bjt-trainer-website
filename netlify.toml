@@ -1,0 +1,14 @@
+# The site is static, so there is nothing to compile. The build command exists
+# only to delete development-only files from the publish directory, so that
+# the repository root can stay the site root without ever serving tooling.
+#
+# netlify.toml takes precedence over the equivalent settings configured in the
+# Netlify UI, so Git-triggered deploys are deterministic with no dashboard
+# configuration required. .netlifyignore covers manual/CLI folder deploys.
+[build]
+  command = "rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
+  publish = "."
+
+# Serve /privacy as well as /privacy.html, matching the live site's behaviour.
+[build.processing.html]
+  pretty_urls = true

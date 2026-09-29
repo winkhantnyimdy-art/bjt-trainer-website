@@ -3,9 +3,9 @@
 Static, bilingual (English / 日本語) marketing site for **BJT Trainer 1.0.0**, the
 offline Business Japanese study app for Android.
 
-No framework, no build step, no backend, no dependencies, no analytics, no
+No framework, no compile step, no backend, no dependencies, no analytics, no
 external requests. Every page works from `file://` as well as from a static
-host.
+host. The live site is **https://bjt-trainer.netlify.app**.
 
 ---
 
@@ -41,6 +41,8 @@ js/app.js               Language toggle, mobile menu, scroll spy, download logic
 assets/site.webmanifest PWA-style manifest
 assets/icons/           Icon sources and generated PNGs
 assets/screenshots/     Optional real app screenshots (see section 7)
+netlify.toml            Netlify build config: strips dev files from the publish
+                        directory so the repo root can stay the site root
 downloads/
   BJT-Trainer-1.0.0.apk The signed Android 1.0.0 release build. Untracked on
                         purpose - see section 4 for the 100 MiB Git limit
@@ -89,7 +91,8 @@ Japanese copy.
 
 ## 4. Publishing the APK
 
-The signed Android 1.0.0 release build is **verified but not yet public**.
+The signed Android 1.0.0 release build is **published** as a GitHub Release
+asset and is what the live download button serves.
 
 ```
 downloads/BJT-Trainer-1.0.0.apk
@@ -112,22 +115,19 @@ A local copy is kept in `downloads/` purely as the verified reference that gets
 uploaded. `tools/qa.js` re-hashes it on every run so a swapped or truncated
 file is caught before publication.
 
-### Turning the download on
+### The download switch
 
-The site ships with the download **off**, because there is no public URL yet:
-
-```js
-downloadAvailable: false,
-androidDownloadUrl: "",
-```
-
-Create the release, then set those two lines to the asset URL:
+The download is **live**. `js/config.js` currently holds:
 
 ```js
 downloadAvailable: true,
 androidDownloadUrl:
-  "https://github.com/<owner>/<repo>/releases/download/<tag>/BJT-Trainer-1.0.0.apk",
+  "https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/BJT-Trainer-1.0.0.apk",
 ```
+
+To publish a future build, create the Release first, then update only
+`androidDownloadUrl` (and the size/SHA-256 fields in section "Replacing the
+APK"). Never point it at a `<owner>`/`<repo>` template.
 
 `js/app.js` then sets `data-download-state="ready"` on `<html>`, which swaps
 every `data-dl="pending"` element for its `data-dl="ready"` twin — the
@@ -183,20 +183,38 @@ visitors never see the placeholder token.
 
 ## 5. Deploying
 
-The site is plain static files, so any static host works — GitHub Pages,
-Cloudflare Pages, Netlify, S3, or plain shared hosting. Upload the repository
-contents as-is; there is nothing to compile.
+The live site is **https://bjt-trainer.netlify.app**, deployed from this
+repository's `master` branch. Any static host still works, but only Netlify
+reads `netlify.toml`, so use that when deploying elsewhere.
 
-Two things to adjust at deploy time:
+### `netlify.toml` — what actually gets published
 
-1. **Canonical URL and `og:url`.** Both are intentionally left commented out
-   in `index.html` rather than filled with a guessed domain. Uncomment and set
-   them once the real address is known. A relative canonical was deliberately
-   *not* used: `href="index.html"` resolves to `/index.html` rather than `/`,
-   which can conflict with whatever the host treats as the site root.
-2. **`og:image`.** The `og:image` tag is also commented out, because most
-   crawlers require an *absolute* URL. Point it at
-   `https://your-domain/assets/icons/og-image.png`.
+The site is plain static files, so there is nothing to compile. `netlify.toml`
+exists purely so the repository root can stay the site root while
+development-only files are still never served:
+
+```toml
+[build]
+  command = "rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
+  publish = "."
+```
+
+`netlify.toml` takes precedence over the equivalent settings in the Netlify
+UI, so a Git push produces the same publish set with no dashboard
+configuration. `.netlifyignore` covers manual/CLI folder deploys as a second
+layer. `.nojekyll` is only meaningful for GitHub Pages, which is not used.
+`assets/screenshots/` is referenced by comments only, so removing it is safe.
+
+To add a new development-only file, add it to the `rm -rf` list **and** to
+`.netlifyignore`. To add a new public asset, do neither.
+
+### Metadata
+
+`canonical`, `og:url` and `og:image` are set to absolute production URLs in
+both `index.html` and `privacy.html`, because most crawlers require absolute
+URLs and a relative canonical such as `href="index.html"` resolves to
+`/index.html` rather than `/`. A relative canonical was deliberately avoided.
+If the site ever moves domains, update the origin in both files together.
 
 ---
 
