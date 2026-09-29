@@ -10,9 +10,9 @@
  * HOW THE ANDROID DOWNLOAD WORKS
  * ---------------------------------------------------------------------------
  *
- * The signed Android 1.0.0 release APK is published as a GitHub Release asset
- * (see the download block below), and `androidDownloadUrl` points at that
- * absolute https URL.
+ * The signed Android 1.0.0 release APK is published as a GitHub Release
+ * asset (see the download block below), and `androidDownloadUrl` points at
+ * that absolute https URL.
  *
  * js/app.js watches `downloadAvailable` and `androidDownloadUrl` and, when
  * `downloadAvailable` is true with a non-empty URL, it:
@@ -56,30 +56,37 @@ window.BJT_SITE_CONFIG = {
   /* ---------------------------------------------------------------- download
    * >>> THESE TWO LINES CONTROL THE PUBLIC DOWNLOAD <<<
    *
-   * The signed Android 1.0.0 release APK is 160,574,584 bytes = 153.13 MiB.
-   * GitHub hard-blocks any git object over 100 MiB, so the APK is NOT tracked
-   * in this repository and is published as a GitHub Release *asset* instead
-   * (assets are attachments, capped at 2 GB, not git objects).
+   * The signed Android 1.0.0 release APK is published as a GitHub Release
+   * asset:
+   *   https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/tag/v1.0.0
    *
-   * The download therefore stays OFF until that release exists. The APK has
-   * been built, signed and verified; it simply has no public URL yet, and
-   * enabling a link that 404s would be worse than showing "coming soon".
+   * The APK is 160,574,584 bytes = 153.13 MiB. GitHub hard-blocks any git
+   * object over 100 MiB, so it is NOT tracked in this repository; release
+   * assets are attachments capped at 2 GB. A local copy is kept in
+   * `downloads/` as the verified reference and is re-hashed by tools/qa.js.
    *
-   * TO PUBLISH: create the release, then replace the two lines below with
+   * The URL below was verified by downloading the published asset back and
+   * confirming it is byte-identical to the approved build.
    *
-   *     downloadAvailable: true,
-   *     androidDownloadUrl:
-   *       "https://github.com/<owner>/<repo>/releases/download/<tag>/BJT-Trainer-1.0.0.apk",
-   *
-   * then re-run `node tools\qa.js` and commit. The filename, size and SHA-256
-   * below must stay exactly as they are.
-   *
-   * To take the download offline again, set:
+   * To take the download offline, set:
    *     downloadAvailable: false,
    *     androidDownloadUrl: "",
    */
-  downloadAvailable: false,
-  androidDownloadUrl: "",
+  downloadAvailable: true,
+  androidDownloadUrl:
+    "https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/BJT-Trainer-1.0.0.apk",
+
+  /* Name of the published file. Used for the `download` attribute so the file
+   * keeps this name regardless of the URL or any cache-busting query. */
+  androidFileName: "BJT-Trainer-1.0.0.apk",
+
+  /* Integrity facts for the published file, shown on the download card so a
+   * visitor can confirm they received exactly the approved build.
+   * Verified against the asset downloaded back from the public release URL. */
+  androidFileSizeBytes: 160574584,
+  androidFileSizeLabel: "153.2 MB",
+  androidFileSha256:
+    "E0D54B13C0D03D162774BE088FC92537B98B50BED277992E7CD8E4A890052D07",
 
   /* Name of the published file. Used for the `download` attribute so the file
    * keeps this name regardless of the URL or any cache-busting query. */
