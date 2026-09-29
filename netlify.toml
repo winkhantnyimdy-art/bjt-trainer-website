@@ -1,14 +1,31 @@
-# The site is static, so there is nothing to compile. The build command exists
-# only to delete development-only files from the publish directory, so that
-# the repository root can stay the site root without ever serving tooling.
+# The site is static, so there is nothing to compile. The build command
+# exists to (1) stage the verified Flutter Web/PWA build under ./app/ and
+# (2) delete development-only files from the publish directory, so that the
+# repository root can stay the site root without ever serving tooling.
+# ./app/ itself is never committed (see .gitignore): tools/fetch-pwa.sh
+# downloads the pinned release asset, verifies its SHA-256 and unzips it on
+# every build, so Git-triggered deploys always reproduce /app/ and can never
+# silently drop it.
 #
 # netlify.toml takes precedence over the equivalent settings configured in the
 # Netlify UI, so Git-triggered deploys are deterministic with no dashboard
 # configuration required. .netlifyignore covers manual/CLI folder deploys.
 [build]
-  command = "rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
+  command = "bash tools/fetch-pwa.sh && rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
   publish = "."
 
 # Serve /privacy as well as /privacy.html, matching the live site's behaviour.
 [build.processing.html]
   pretty_urls = true
+
+# Flutter PWA safety net. The app is a single document with in-app navigation
+# (no path routes), so /app/ and /app/index.html already resolve on their own.
+# This rewrite fires only for /app/... paths with no matching static file:
+# Netlify never shadows a real file without force = true, so /app/manifest.json,
+# /app/bjt-trainer-sw.js and every /app/assets/... file keep being served
+# directly. It exists so a future deep link or a stray reload inside /app/
+# boots the PWA instead of 404ing. It cannot affect / or /privacy.
+[[redirects]]
+  from = "/app/*"
+  to = "/app/index.html"
+  status = 200

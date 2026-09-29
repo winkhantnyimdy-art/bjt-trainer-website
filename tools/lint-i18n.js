@@ -30,7 +30,10 @@ const PLACEHOLDERS = /CONTACT_EMAIL_TO_BE_ADDED|YOUR-DOMAIN|your-cdn\.example|pl
  *
  * `APK`, `Google` and `Play` are here because the direct-install note has to
  * name the file format and say plainly that the app is not on Google Play.
- * `apk` (lowercase) appears in the published file name. */
+ * `apk` (lowercase) appears in the published file name.
+ * `App`, `Store`, `Safari` and `iPhone` are here because the iPhone web-app
+ * install section has to say plainly that no App Store install is needed,
+ * name the Safari Share flow, and address iPhone owners directly. */
 const LATIN_OK = new Set([
   "BJT", "JETRO", "Android", "HTML", "CSS", "JavaScript", "SDK", "Trainer",
   "Study", "Progress", "Practice", "Home", "Settings", "Mock", "Exam",
@@ -38,6 +41,7 @@ const LATIN_OK = new Set([
   "i18n", "en", "ja", "class", "div", "a", "span", "strong", "p", "id", "href",
   "aria", "pressed", "true", "false", "lang", "btn", "NOT", "MIR", "API",
   "ID", "VOICEVOX", "APK", "apk", "SHA", "Google", "Play",
+  "App", "Store", "Safari", "iPhone",
 ]);
 
 function latinWords(s) {

@@ -21,6 +21,16 @@ node_modules/
 #   sha256 E0D54B13C0D03D162774BE088FC92537B98B50BED277992E7CD8E4A890052D07
 downloads/
 
+# The staged Flutter Web/PWA build.
+#
+# ./app/ is materialized at deploy time by tools/fetch-pwa.sh from the pinned
+# bjt-trainer-web-1.0.0.zip release asset (~141 MB of generated files), so it
+# must never be committed — same policy as downloads/ above. Local copies
+# produced by running the fetch script (for QA or manual deploys) are
+# intentionally untracked.
+app/
+*.zip
+
 # OS / editor noise
 .DS_Store
 Thumbs.db
