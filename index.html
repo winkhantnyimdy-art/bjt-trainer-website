@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BJT Trainer 1.0.0 — Business Japanese practice for Android</title>
+<meta name="description" content="BJT Trainer is an offline-first Android study app with 196 original Business Japanese practice questions, bundled listening audio, Timed Practice and a Mock Exam. No account, no ads, no analytics.">
+<meta name="theme-color" content="#1E3A5F">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<!-- Open Graph / Twitter. No domain is assumed here on purpose.
+     Before deploying, add an absolute URL for og:image and og:url. -->
+
+<!-- Set an absolute canonical at deploy time. A relative "index.html" would
+     resolve to /index.html rather than /, so it is left off deliberately
+     rather than shipping a self-referential signal that can conflict with
+     whatever the host uses as the site root. -->
+<!-- <link rel="canonical" href="https://YOUR-DOMAIN.example/"> -->
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="apple-mobile-web-app-title" content="BJT Trainer">
+<meta name="application-name" content="BJT Trainer">
+
+<!-- Open Graph / Twitter. No domain is assumed here on purpose.
+     Before deploying, add an absolute URL for og:image and og:url. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BJT Trainer">
+<meta property="og:title" content="BJT Trainer — Business Japanese practice, wherever you are">
+<meta property="og:description" content="196 original Business Japanese practice questions, bundled listening audio, Timed Practice and a Mock Exam. Works offline, no account required.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary">
+<!-- <meta property="og:image" content="assets/icons/og-image.png">
+<meta property="og:image:alt" content="BJT Trainer — Business Japanese practice app">
+<meta property="og:url" content="https://YOUR-DOMAIN.example/"> -->
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body
+  data-title-en="BJT Trainer 1.0.0 — Business Japanese practice for Android"
+  data-title-ja="BJT Trainer 1.0.0 — ビジネス日本語の練習アプリ（Android）"
+  data-og-title-ja="BJT Trainer — ビジネス日本語を、いつでもどこでも"
+  data-og-desc-ja="オリジナルのビジネス日本語練習問題196問、音声教材、制限時間練習、モック試験。オフラインで動作し、アカウントも広告も解析もありません。">
+
+<a class="skip-link" href="#main">
+  <span class="i18n__en">Skip to main content</span><span class="i18n__ja">本文へスキップ</span>
+</a>
+
+<!-- ===================================================== icon sprite -->
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+<defs>
+  <g id="ico-base" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"></g>
+</defs>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.2 2.4 2.4 4.6-4.9"/></symbol>
+<symbol id="i-offline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 18.4a4.2 4.2 0 0 1 .5-8.37A5.6 5.6 0 0 1 17.5 9.3a4 4 0 0 1-.4 9.1"/><path d="M3 3 21 21"/></symbol>
+<symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 2.8 7.4 12 12l9.2-4.6L12 2.8Z"/><path d="m2.8 12.2 9.2 4.6 9.2-4.6"/><path d="m2.8 16.6 9.2 4.6 9.2-4.6"/></symbol>
+<symbol id="i-headphones" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 15.5v-3.2a7.5 7.5 0 0 1 15 0v3.2"/><rect x="3" y="14" width="4.4" height="6" rx="2.1"/><rect x="16.6" y="14" width="4.4" height="6" rx="2.1"/></symbol>
+<symbol id="i-timer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.2" r="7.8"/><path d="M12 9.4v3.8l2.4 1.9"/><path d="M9.4 2.6h5.2"/><path d="M12 2.6v2.8"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.2 4.2H7a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-13a2 2 0 0 0-2-2h-2.2"/><rect x="9.2" y="2.4" width="5.6" height="3.6" rx="1"/><path d="M9 11.6h6"/><path d="M9 15.4h4"/></symbol>
+<symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3.4" y="3.4" width="7" height="7" rx="1.8"/><rect x="13.6" y="3.4" width="7" height="7" rx="1.8"/><rect x="3.4" y="13.6" width="7" height="7" rx="1.8"/><rect x="13.6" y="13.6" width="7" height="7" rx="1.8"/></symbol>
+<symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.6v16.8h16"/><path d="M8 16.4V12"/><path d="M12 16.4V7.6"/><path d="M16 16.4v-5.6"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 5 5.8v5.4c0 4.2 2.8 7.9 7 9.3 4.2-1.4 7-5.1 7-9.3V5.8l-7-3Z"/><path d="m9.2 11.8 2 2 3.6-3.9"/></symbol>
+<symbol id="i-user-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15.4 20.4v-1.7a4 4 0 0 0-4-4H6.2a4 4 0 0 0-4 4v1.7"/><circle cx="8.8" cy="7.4" r="3.6"/><path d="m16.8 16.8 4.6 4.6"/><path d="m21.4 16.8-4.6 4.6"/></symbol>
+<symbol id="i-ban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.8"/><path d="m5.8 5.8 12.4 12.4"/></symbol>
+<symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 2.6 21.4 21.4"/><path d="M10.4 6.1A9.6 9.6 0 0 1 12 6c5 0 9 4.4 10 6-.4.6-1.2 1.7-2.5 2.8"/><path d="M6.4 8.2C3.7 9.7 2.3 11.3 2 12c1 1.6 5 6 10 6 1.5 0 2.9-.4 4.1-1"/><path d="M9.8 9.9a3 3 0 0 0 4.3 4.2"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.4" width="12" height="19.2" rx="2.6"/><path d="M10.4 18.4h3.2"/></symbol>
+<symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.8"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1.1"/></symbol>
+<symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20.2 5 16 16.6 4.4a2.2 2.2 0 0 1 3.1 3.1L8.1 19 4 20.2Z"/><path d="m14.6 6.4 3.1 3.1"/></symbol>
+<symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.6S10 4.6 6 4.6H3.4v12.2H6c4 0 6 2 6 2s2-2 6-2h2.6V4.6H18c-4 0-6 2-6 2Z"/><path d="M12 6.6v12.2"/></symbol>
+<symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3 17 5.4-5.4 3.4 3.4L21 5.8"/><path d="M15.2 5.8H21v5.8"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.8"/><path d="M12 11.2v5"/><path d="M12 7.7h.01"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 2.6 20.4h18.8L12 3.6Z"/><path d="M12 9.6v4.4"/><path d="M12 17.4h.01"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="m11 18-6-6 6-6"/></symbol>
+<symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><path d="M7.5 4.6 19 12 7.5 19.4V4.6Z"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4v11.2"/><path d="m7.4 10.6 4.6 4.6 4.6-4.6"/><path d="M4.4 19.4h15.2"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.4V8a5.4 5.4 0 0 1 10.8 0v2.4"/><rect x="4.2" y="10.4" width="15.6" height="10.4" rx="2.2"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.2"/><path d="m3.6 7 8.4 5.6L20.4 7"/></symbol>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 11.8c0 3.6-3.8 6.5-8.4 6.5-.9 0-1.8-.1-2.6-.3L4 20.2l1.3-3.5a6.6 6.6 0 0 1-1.7-4.4c0-3.6 3.8-6.5 8.4-6.5s8.4 2.9 8.4 6.5Z"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="7.6" width="18.8" height="12" rx="2.2"/><path d="M8.6 7.6V5.8a2 2 0 0 1 2-2h2.8a2 2 0 0 1 2 2v1.8"/><path d="M2.6 12.8h18.8"/></symbol>
+<symbol id="i-translate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6.2h8"/><path d="M7 4.2v2"/><path d="M9 6.2c0 4-2.9 7.4-6 8.4"/><path d="M4.8 10.2c1.4 2.4 3.4 3.9 5.8 4.4"/><path d="m12.4 20.6 3.8-9.8 3.8 9.8"/><path d="M13.9 17.2h4.6"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m3.6 11.4 8.4-7.4 8.4 7.4"/><path d="M5.8 10.4V20h12.4v-9.6"/><path d="M9.8 20v-5.2h4.4V20"/></symbol>
+<symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.4h16"/><path d="M4 16.6h16"/><circle cx="9.4" cy="7.4" r="2.2"/><circle cx="15" cy="16.6" r="2.2"/></symbol>
+<symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></symbol>
+<symbol id="i-logo" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#1E3A5F"/>
+  <text x="50" y="50.8" text-anchor="middle" fill="#FFFFFF" font-family="Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="27.5" font-weight="700" letter-spacing="-0.4">BJT</text>
+  <rect x="22.4" y="70.3" width="55.7" height="4.7" fill="#D23434"/>
+</symbol>
+</svg>
+
+<noscript>
+  <p class="noscript-note"><span class="i18n__en">JavaScript is disabled, so this page is shown in English.</span><span class="i18n__ja">JavaScript が無効になっているため、このページは英語で表示されています。</span></p>
+</noscript>
+
+<!-- ===================================================== site header -->
+<header class="site-header">
+  <div class="shell header__bar">
+      <a class="brand" href="index.html" aria-label="BJT Trainer">
+        <svg class="brand__mark" aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+        <span class="brand__name" aria-hidden="true">BJT Trainer</span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" data-nav aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#features" data-nav-link><span class="i18n__en">Features</span><span class="i18n__ja">機能</span></a></li>
+        <li><a class="nav__link" href="#practice" data-nav-link><span class="i18n__en">Practice</span><span class="i18n__ja">練習</span></a></li>
+        <li><a class="nav__link" href="#privacy" data-nav-link><span class="i18n__en">Privacy</span><span class="i18n__ja">プライバシー</span></a></li>
+        <li><a class="nav__link" href="#about" data-nav-link><span class="i18n__en">About</span><span class="i18n__ja">概要</span></a></li>
+      </ul>
+      <div class="nav__panel-actions">
+        <a class="btn btn--primary btn--sm" href="#download" data-nav-link>
+          <span class="i18n__en">Download</span><span class="i18n__ja">ダウンロード</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="header__actions">
+      <div class="lang" role="group" aria-label="Language / 言語">
+        <button type="button" class="lang__btn" data-lang-btn="en" aria-pressed="true" lang="en" aria-label="Switch to English">EN</button>
+        <button type="button" class="lang__btn" data-lang-btn="ja" aria-pressed="false" lang="ja" aria-label="日本語で表示する">日本語</button>
+      </div>
+      <a class="btn btn--primary btn--sm header__download" href="#download" data-nav-link>
+        <span class="i18n__en">Download</span><span class="i18n__ja">ダウンロード</span>
+      </a>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"><span></span></span>
+        <span class="nav-toggle__label i18n__en">Menu</span><span class="nav-toggle__label i18n__ja">メニュー</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<p id="lang-status" class="sr-only" aria-live="polite" role="status"></p>
+
+<main id="main">
+
+<!-- ===================================================== hero -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="shell hero__inner">
+    <div>
+      <p class="hero__badge">
+        <svg aria-hidden="true" focusable="false"><use href="#i-offline"></use></svg>
+        <span class="i18n__en">Works offline</span><span class="i18n__ja">オフラインで動作</span>
+      </p>
+
+      <h1 class="hero__title" id="hero-title">
+        <span class="i18n__en">Business Japanese practice, wherever you are.</span>
+        <span class="i18n__ja">ビジネス日本語を、いつでもどこでも。</span>
+      </h1>
+
+      <p class="hero__lead">
+        <span class="i18n__en">An Android study app with 196 original Business Japanese questions, bundled listening audio and a clear study path — for the Japanese you need at work, in short daily sessions. Works fully offline.</span>
+        <span class="i18n__ja">オリジナルのビジネス日本語練習問題196問と音声教材を備えた Android 学習アプリ。仕事で使う日本語を、短時間の学習で通信なしで練習できます。</span>
+      </p>
+
+      <div class="hero__actions">
+        <div class="hero__cta">
+          <button type="button" class="btn btn--primary" data-download-btn aria-disabled="true" aria-describedby="hero-download-note">
+            <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#i-download"></use></svg>
+            <span class="i18n__en">Download for Android</span><span class="i18n__ja">Android 版をダウンロード</span>
+            <span class="btn__tag" data-dl="ready"><span class="i18n__en">New</span><span class="i18n__ja">新着</span></span>
+          </button>
+  <p class="download__note" id="hero-download-note" data-dl="pending">
+    <span class="i18n__en">Android download coming soon</span><span class="i18n__ja">Android 版は準備中です</span>
+  </p>
+      <p class="download__note" data-dl="ready">
+        <span class="i18n__en">Direct APK download · no account needed</span><span class="i18n__ja">APK の直接ダウンロード · アカウント不要</span>
+      </p>
+        </div>
+
+        <a class="btn btn--ghost hero__cta" href="#features">
+          <span class="i18n__en">Explore features</span><span class="i18n__ja">機能を見る</span>
+          <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#i-arrow-right"></use></svg>
+        </a>
+      </div>
+
+      <ul class="hero__facts">
+        <li class="hero__fact">
+          <svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>
+          <span class="i18n__en">196 original practice questions</span><span class="i18n__ja">オリジナルの練習問題196問</span>
+        </li>
+        <li class="hero__fact">
+          <svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>
+          <span class="i18n__en">No account required</span><span class="i18n__ja">アカウントは不要</span>
+        </li>
+        <li class="hero__fact">
+          <svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>
+          <span class="i18n__en">No ads, no analytics</span><span class="i18n__ja">広告・アクセス解析なし</span>
+        </li>
+        <li class="hero__fact">
+          <svg aria-hidden="true" focusable="false"><use href="#i-check"></use></svg>
+          <span class="i18n__en">Android · Version <span data-config="version">1.0.0</span></span>
+          <span class="i18n__ja">Android · バージョン <span data-config="version">1.0.0</span></span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Stylised HTML/CSS illustration of the app. Not a real screenshot.
+         To swap in real device screenshots, see README.md. -->
+    <div class="preview__item">
+      <div class="phone-slot">
+        <div class="phone" role="img"
+             aria-label="Illustration of the BJT Trainer Study screen showing six study categories with per-category progress.">
+          <div class="phone__notch" aria-hidden="true"></div>
+          <div class="phone__screen">
+            <div class="mock-statusbar" aria-hidden="true">
+              <span>9:41</span>
+              <span class="mock-statusbar__icons"><span></span><span></span></span>
+            </div>
+            <div class="mock-appbar">
+              <svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+              <span>BJT Trainer</span>
+            </div>
+            <div class="mock-body">
+              <div>
+                <p class="mock-h">Study</p>
+                <p class="mock-sub">196 practice questions across categories</p>
+              </div>
+              <div class="mock-btn">
+                <svg aria-hidden="true" focusable="false"><use href="#i-play"></use></svg>
+                <span>Continue study</span>
+              </div>
+              <p class="mock-section-label">Categories</p>
+              <div class="mock-card" style="padding:2px 9px">
+                <div class="mock-row">
+                  <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-headphones"></use></svg></span>
+                  <span class="mock-row__text">
+                    <span class="mock-row__title">Listening</span>
+                    <span class="mock-row__meta">47 answered · 2 to review</span>
+                    <span class="mock-bar"><span class="mock-bar__fill" style="width:62%"></span></span>
+                  </span>
+                  <span class="mock-row__count">76</span>
+                </div>
+                <div class="mock-row">
+                  <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-book"></use></svg></span>
+                  <span class="mock-row__text">
+                    <span class="mock-row__title">Reading</span>
+                    <span class="mock-row__meta">18 answered</span>
+                    <span class="mock-bar"><span class="mock-bar__fill" style="width:38%"></span></span>
+                  </span>
+                  <span class="mock-row__count">48</span>
+                </div>
+                <div class="mock-row">
+                  <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-briefcase"></use></svg></span>
+                  <span class="mock-row__text">
+                    <span class="mock-row__title">Workplace Communication</span>
+                    <span class="mock-row__meta">20 answered · 1 to review</span>
+                    <span class="mock-bar"><span class="mock-bar__fill" style="width:80%"></span></span>
+                  </span>
+                  <span class="mock-row__count">25</span>
+                </div>
+                <div class="mock-row">
+                  <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-translate"></use></svg></span>
+                  <span class="mock-row__text">
+                    <span class="mock-row__title">Vocabulary</span>
+                    <span class="mock-row__meta">5 answered</span>
+                    <span class="mock-bar"><span class="mock-bar__fill" style="width:28%"></span></span>
+                  </span>
+                  <span class="mock-row__count">18</span>
+                </div>
+                <div class="mock-row">
+                  <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-pen"></use></svg></span>
+                  <span class="mock-row__text">
+                    <span class="mock-row__title">Grammar</span>
+                    <span class="mock-row__meta">2 answered</span>
+                    <span class="mock-bar"><span class="mock-bar__fill" style="width:12%"></span></span>
+                  </span>
+                  <span class="mock-row__count">17</span>
+                </div>
+                <div class="mock-row">
+                  <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-chat"></use></svg></span>
+                  <span class="mock-row__text">
+                    <span class="mock-row__title">Business Expressions</span>
+                    <span class="mock-row__meta">5 answered</span>
+                    <span class="mock-bar"><span class="mock-bar__fill" style="width:42%"></span></span>
+                  </span>
+                  <span class="mock-row__count">12</span>
+                </div>
+              </div>
+            </div>
+            <div class="mock-tabbar" aria-hidden="true">
+              <span class="mock-tab"><svg><use href="#i-home"></use></svg>Home</span>
+              <span class="mock-tab is-active"><svg><use href="#i-book"></use></svg>Study</span>
+              <span class="mock-tab"><svg><use href="#i-sliders"></use></svg>Practice</span>
+              <span class="mock-tab"><svg><use href="#i-chart"></use></svg>Progress</span>
+              <span class="mock-tab"><svg><use href="#i-gear"></use></svg>Settings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="preview__caption">
+        <span class="i18n__en">Stylised illustration of the Study screen — not a real screenshot.</span>
+        <span class="i18n__ja">Study 画面のイメージ図です。実際のスクリーンショットではありません。</span>
+      </figcaption>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== features -->
+<section class="section" id="features" aria-labelledby="features-title">
+  <div class="shell">
+    <div class="section__head">
+      <p class="section__eyebrow">
+        <span class="i18n__en">Features</span><span class="i18n__ja">機能</span>
+      </p>
+      <h2 class="section__title" id="features-title">
+        <span class="i18n__en">Everything you need to practise, and nothing you don't.</span>
+        <span class="i18n__ja">必要な機能だけ。余計なものはありません。</span>
+      </h2>
+      <p class="section__lead">
+        <span class="i18n__en">BJT Trainer keeps the study loop simple: pick something to practise, answer, read the explanation, and watch your progress grow on your own device.</span>
+        <span class="i18n__ja">BJT Trainer は、練習の流れを単純に保ちます。練習する内容を選び、回答し、解説を読み、端末の中で進捗を伸ばしていくだけです。</span>
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card card--lead">
+        <span class="card__icon card__icon--accent"><svg aria-hidden="true" focusable="false"><use href="#i-layers"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">196 original practice questions</span>
+          <span class="i18n__ja">オリジナルの練習問題 196 問</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">Six study areas of original Business Japanese material: listening, reading, vocabulary, grammar, workplace communication and business expressions, plus image-based questions. Every question was written for BJT Trainer — none were taken from a real exam.</span>
+          <span class="i18n__ja">リスニング、読解、語彙、文法、仕事上のコミュニケーション、ビジネス表現の6領域に加え、画像問題も収録しています。すべての問題は BJT Trainer のために書かれたものであり、実際の試験から抜粋したものではありません。</span>
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card__icon"><svg aria-hidden="true" focusable="false"><use href="#i-headphones"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">Listening practice</span>
+          <span class="i18n__ja">リスニング練習</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">Practise workplace conversations and short announcements with audio bundled inside the app. Nothing to stream, nothing to download first, and playback you control.</span>
+          <span class="i18n__ja">仕事の会話や短いアナウンスを、アプリに収録された音声で練習します。ストリーミングも事前のダウンロードも不要で、再生は自分のペースで操作できます。</span>
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card__icon"><svg aria-hidden="true" focusable="false"><use href="#i-timer"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">Timed Practice</span>
+          <span class="i18n__ja">タイマープラクティス</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">Answer under time pressure with 5, 15, 30 or 60 minute sessions, or set any custom length from 1 to 1440 minutes. Short sessions build the answering pace you need.</span>
+          <span class="i18n__ja">5分・15分・30分・60分のプリセットに加え、1分〜1440分の任意の時間を設定できます。短い時間を重ねることで、回答にかかる時間に慣れていきます。</span>
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card__icon"><svg aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">Mock Exam</span>
+          <span class="i18n__ja">モック試験</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">A full practice simulation: up to 80 questions with a 105-minute timer. Answers and explanations stay hidden while you work, and complete results appear once you finish.</span>
+          <span class="i18n__ja">最大80問・105分の模擬試験です。作答中は解答も解説も表示せず、終了後に結果と解説がまとめて表示されます。</span>
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card__icon"><svg aria-hidden="true" focusable="false"><use href="#i-grid"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">Study by category</span>
+          <span class="i18n__ja">カテゴリー別に学習</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">Focus on one area at a time — Listening, Reading, Vocabulary, Grammar, Workplace Communication or Business Expressions — or mix categories together in a regular session.</span>
+          <span class="i18n__ja">リスニング、読解、語彙、文法、仕事上のコミュニケーション、ビジネス表現。1つの分野に集中して練習することも、通常のセッションでいくつかの分野を混ぜて練習することもできます。</span>
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card__icon"><svg aria-hidden="true" focusable="false"><use href="#i-chart"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">Progress that stays with you</span>
+          <span class="i18n__ja">手元に残る学習の履歴</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">Attempts, accuracy, bookmarks and mistakes are recorded locally, so you can pick up exactly where you left off and drill the questions you keep getting wrong.</span>
+          <span class="i18n__ja">学習回数・正答率・ブックマーク・間違えた問題は端末に記録されます。前回の続きから再開でき、苦手な問題を続けて復習できます。</span>
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card__icon"><svg aria-hidden="true" focusable="false"><use href="#i-offline"></use></svg></span>
+        <h3 class="card__title">
+          <span class="i18n__en">Offline-first</span>
+          <span class="i18n__ja">オフライン優先</span>
+        </h3>
+        <p class="card__text">
+          <span class="i18n__en">Study content, audio, images and your progress all work without an internet connection after installation. There is nothing to sync and no cloud to depend on.</span>
+          <span class="i18n__ja">インストール後は、問題・音声・画像・学習履歴のすべてを通信なしで利用できます。同期処理もクラウド接続も行いません。</span>
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== practice -->
+<section class="section section--alt" id="practice" aria-labelledby="practice-title">
+  <div class="shell">
+    <div class="section__head">
+      <p class="section__eyebrow">
+        <span class="i18n__en">Practice</span><span class="i18n__ja">練習</span>
+      </p>
+      <h2 class="section__title" id="practice-title">
+        <span class="i18n__en">A four-step study loop you can repeat daily.</span>
+        <span class="i18n__ja">毎日繰り返せる、4つのステップ。</span>
+      </h2>
+    </div>
+
+    <ol class="steps">
+      <li class="step">
+        <span class="step__icon" aria-hidden="true"><svg focusable="false"><use href="#i-target"></use></svg></span>
+        <span class="step__n" aria-hidden="true"></span>
+        <h3 class="step__title">
+          <span class="i18n__en">Choose what to practise</span>
+          <span class="i18n__ja">何を練習するか選ぶ</span>
+        </h3>
+        <p class="step__text">
+          <span class="i18n__en">Pick a mode: regular practice, a single category, your bookmarks, your mistakes, a custom mix by difficulty, a timed session, or the mock exam.</span>
+          <span class="i18n__ja">通常の練習、単一カテゴリー、ブックマーク、間違えた問題、難易度でのカスタム、制限時間、モック試験から選びます。</span>
+        </p>
+      </li>
+      <li class="step">
+        <span class="step__icon" aria-hidden="true"><svg focusable="false"><use href="#i-pen"></use></svg></span>
+        <span class="step__n" aria-hidden="true"></span>
+        <h3 class="step__title">
+          <span class="i18n__en">Answer the questions</span>
+          <span class="i18n__ja">質問に答える</span>
+        </h3>
+        <p class="step__text">
+          <span class="i18n__en">Work through the set at your own pace, with bundled audio and images wherever a question calls for them.</span>
+          <span class="i18n__ja">自分のペースで問題を解きます。問題によっては音声や画像も一緒に確認します。</span>
+        </p>
+      </li>
+      <li class="step">
+        <span class="step__icon" aria-hidden="true"><svg focusable="false"><use href="#i-book"></use></svg></span>
+        <span class="step__n" aria-hidden="true"></span>
+        <h3 class="step__title">
+          <span class="i18n__en">Review the explanations</span>
+          <span class="i18n__ja">解説を確認する</span>
+        </h3>
+        <p class="step__text">
+          <span class="i18n__en">Read the correct answer and the explanation as soon as the session ends. In a mock exam they appear together at the end instead.</span>
+          <span class="i18n__ja">セッションが終わったら、正解と解説を確認できます。モック試験では、終了後にまとめて表示されます。</span>
+        </p>
+      </li>
+      <li class="step">
+        <span class="step__icon" aria-hidden="true"><svg focusable="false"><use href="#i-trend"></use></svg></span>
+        <span class="step__n" aria-hidden="true"></span>
+        <h3 class="step__title">
+          <span class="i18n__en">Track your progress</span>
+          <span class="i18n__ja">進捗を記録する</span>
+        </h3>
+        <p class="step__text">
+          <span class="i18n__en">See accuracy and history build up on your device, then decide what to review next time.</span>
+          <span class="i18n__ja">端末に積み上がる正答率と履歴を確認し、次に何を復習するかを決められます。</span>
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================================================== product preview -->
+<section class="section" aria-labelledby="preview-title">
+  <div class="shell">
+    <div class="section__head">
+      <p class="section__eyebrow">
+        <span class="i18n__en">Inside the app</span><span class="i18n__ja">アプリの中</span>
+      </p>
+      <h2 class="section__title" id="preview-title">
+        <span class="i18n__en">A calm place to study.</span>
+        <span class="i18n__ja">静かに学習できる場所。</span>
+      </h2>
+      <p class="section__lead">
+        <span class="i18n__en">One screen at a time: categories on the left of your attention, one question in front of you, and nothing competing for it. The illustrations below are stylised previews drawn with HTML and CSS — they are not device screenshots.</span>
+        <span class="i18n__ja">一度に一つの画面だけ。カテゴリー、ひとつの問題、そして邪魔するものはありません。以下は HTML と CSS で描いたイメージ図であり、実際の端末スクリーンショットではありません。</span>
+      </p>
+    </div>
+
+    <div class="preview__grid">
+      <figure class="preview__item">
+        <div class="phone-slot">
+          <div class="phone" role="img"
+               aria-label="Illustration of a BJT Trainer listening question with an audio player, four answer options and a session progress bar.">
+            <div class="phone__notch" aria-hidden="true"></div>
+            <div class="phone__screen">
+              <div class="mock-statusbar" aria-hidden="true">
+                <span>9:41</span>
+                <span class="mock-statusbar__icons"><span></span><span></span></span>
+              </div>
+              <div class="mock-appbar">
+                <svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+                <span>Practice</span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-audio">
+                  <span class="mock-audio__play"><svg aria-hidden="true" focusable="false"><use href="#i-play"></use></svg></span>
+                  <span class="mock-wave" aria-hidden="true">
+                    <i style="--h:6px"></i><i style="--h:11px"></i><i style="--h:8px"></i><i style="--h:15px"></i><i style="--h:9px"></i><i style="--h:13px"></i><i style="--h:5px"></i><i style="--h:10px"></i><i style="--h:16px"></i><i style="--h:7px"></i><i style="--h:12px"></i><i style="--h:6px"></i><i style="--h:14px"></i><i style="--h:9px"></i><i style="--h:5px"></i><i style="--h:11px"></i><i style="--h:7px"></i>
+                  </span>
+                  <span class="mock-timer__l">0:08</span>
+                </div>
+
+                <p class="mock-sub">Question 14 · Listening</p>
+                <p class="mock-q">
+                  <span style="font-weight:700">Choose the best reply.</span><br>
+                  「すみません、資料は何時までに必要ですか。」
+                </p>
+
+                <div class="mock-opt is-picked"><span class="mock-opt__k">A</span>3時です。</div>
+                <div class="mock-opt"><span class="mock-opt__k">B</span>5時です。</div>
+                <div class="mock-opt"><span class="mock-opt__k">C</span>明日です。</div>
+                <div class="mock-opt"><span class="mock-opt__k">D</span>分かりません。</div>
+
+                <div style="margin-top:auto">
+                  <div style="display:flex;justify-content:space-between;font-size:8.5px;color:var(--ink-500)">
+                    <span>14 answered</span><span>3:12</span>
+                  </div>
+                  <span class="mock-bar"><span class="mock-bar__fill" style="width:35%"></span></span>
+                </div>
+              </div>
+              <div class="mock-tabbar" aria-hidden="true">
+                <span class="mock-tab"><svg><use href="#i-home"></use></svg>Home</span>
+                <span class="mock-tab"><svg><use href="#i-book"></use></svg>Study</span>
+                <span class="mock-tab is-active"><svg><use href="#i-sliders"></use></svg>Practice</span>
+                <span class="mock-tab"><svg><use href="#i-chart"></use></svg>Progress</span>
+                <span class="mock-tab"><svg><use href="#i-gear"></use></svg>Settings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="preview__caption">
+          <span class="i18n__en">Stylised illustration of a listening question — not a real screenshot.</span>
+          <span class="i18n__ja">リスニング問題のイメージ図です。実際のスクリーンショットではありません。</span>
+        </figcaption>
+      </figure>
+
+      <figure class="preview__item">
+        <div class="phone-slot">
+          <div class="phone" role="img"
+               aria-label="Illustration of the BJT Trainer mock exam screen showing a countdown timer, question 12 of 80, a progress bar and a notice that answers are hidden.">
+            <div class="phone__notch" aria-hidden="true"></div>
+            <div class="phone__screen">
+              <div class="mock-statusbar" aria-hidden="true">
+                <span>9:41</span>
+                <span class="mock-statusbar__icons"><span></span><span></span></span>
+              </div>
+              <div class="mock-appbar">
+                <svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+                <span>Mock Exam</span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-timer">
+                  <span class="mock-timer__n">104:12</span>
+                  <span class="mock-timer__l">remaining</span>
+                </div>
+                <span class="mock-bar"><span class="mock-bar__fill" style="width:15%"></span></span>
+
+                <span class="mock-chip">
+                  <svg aria-hidden="true" focusable="false"><use href="#i-lock"></use></svg>
+                  Answers hidden until you finish
+                </span>
+
+                <p class="mock-sub">Question 12 of 80</p>
+                <p class="mock-q">
+                  <span style="font-weight:700">Choose the correct particle.</span><br>
+                  「今月、商品が&nbsp;<u>&nbsp;&nbsp;&nbsp;</u>&nbsp;発売されます。」
+                </p>
+
+                <div class="mock-opt"><span class="mock-opt__k">A</span>に</div>
+                <div class="mock-opt"><span class="mock-opt__k">B</span>を</div>
+                <div class="mock-opt"><span class="mock-opt__k">C</span>で</div>
+                <div class="mock-opt"><span class="mock-opt__k">D</span>へ</div>
+
+                <div class="mock-card" style="margin-top:auto;background:var(--navy-050);border-color:var(--navy-100)">
+                  <p class="mock-sub">Explanations and results appear after you submit.</p>
+                </div>
+              </div>
+              <div class="mock-tabbar" aria-hidden="true">
+                <span class="mock-tab"><svg><use href="#i-home"></use></svg>Home</span>
+                <span class="mock-tab"><svg><use href="#i-book"></use></svg>Study</span>
+                <span class="mock-tab is-active"><svg><use href="#i-sliders"></use></svg>Practice</span>
+                <span class="mock-tab"><svg><use href="#i-chart"></use></svg>Progress</span>
+                <span class="mock-tab"><svg><use href="#i-gear"></use></svg>Settings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="preview__caption">
+          <span class="i18n__en">Stylised illustration of the mock exam — not a real screenshot.</span>
+          <span class="i18n__ja">モック試験のイメージ図です。実際のスクリーンショットではありません。</span>
+        </figcaption>
+      </figure>
+
+      <figure class="preview__item">
+        <div class="phone-slot">
+          <div class="phone" role="img"
+               aria-label="Illustration of the BJT Trainer progress screen showing overall accuracy, review counts and recent exam results.">
+            <div class="phone__notch" aria-hidden="true"></div>
+            <div class="phone__screen">
+              <div class="mock-statusbar" aria-hidden="true">
+                <span>9:41</span>
+                <span class="mock-statusbar__icons"><span></span><span></span></span>
+              </div>
+              <div class="mock-appbar">
+                <svg aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+                <span>Progress</span>
+              </div>
+              <div class="mock-body">
+                <div>
+                  <p class="mock-h">Progress</p>
+                  <p class="mock-sub">Saved on this device</p>
+                </div>
+
+                <div style="display:flex;gap:6px">
+                  <span class="mock-stat"><span class="mock-stat__n">24</span><span class="mock-stat__l">Sessions</span></span>
+                  <span class="mock-stat"><span class="mock-stat__n">318</span><span class="mock-stat__l">Answered</span></span>
+                  <span class="mock-stat"><span class="mock-stat__n">71%</span><span class="mock-stat__l">Accuracy</span></span>
+                </div>
+
+                <p class="mock-section-label">Review</p>
+                <div class="mock-card" style="display:flex;gap:6px">
+                  <span class="mock-stat"><span class="mock-stat__n">11</span><span class="mock-stat__l">Mistakes</span></span>
+                  <span class="mock-stat"><span class="mock-stat__n">9</span><span class="mock-stat__l">Bookmarks</span></span>
+                </div>
+
+                <p class="mock-section-label">Recent exams</p>
+                <div class="mock-card" style="padding:2px 9px">
+                  <div class="mock-row">
+                    <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg></span>
+                    <span class="mock-row__text">
+                      <span class="mock-row__title">Mock exam</span>
+                      <span class="mock-row__meta">80 questions · 104 min</span>
+                    </span>
+                    <span class="mock-row__count">74%</span>
+                  </div>
+                  <div class="mock-row">
+                    <span class="mock-row__icon"><svg aria-hidden="true" focusable="false"><use href="#i-clipboard"></use></svg></span>
+                    <span class="mock-row__text">
+                      <span class="mock-row__title">Mock exam</span>
+                      <span class="mock-row__meta">80 questions · 99 min</span>
+                    </span>
+                    <span class="mock-row__count">68%</span>
+                  </div>
+                </div>
+
+                <p class="mock-section-label">By question type</p>
+                <div class="mock-card" style="padding:2px 9px">
+                  <div class="mock-row">
+                    <span class="mock-row__text"><span class="mock-row__title">Listening</span></span>
+                    <span class="mock-row__count">76</span>
+                  </div>
+                  <div class="mock-row">
+                    <span class="mock-row__text"><span class="mock-row__title">Reading</span></span>
+                    <span class="mock-row__count">45</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mock-tabbar" aria-hidden="true">
+                <span class="mock-tab"><svg><use href="#i-home"></use></svg>Home</span>
+                <span class="mock-tab"><svg><use href="#i-book"></use></svg>Study</span>
+                <span class="mock-tab"><svg><use href="#i-sliders"></use></svg>Practice</span>
+                <span class="mock-tab is-active"><svg><use href="#i-chart"></use></svg>Progress</span>
+                <span class="mock-tab"><svg><use href="#i-gear"></use></svg>Settings</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="preview__caption">
+          <span class="i18n__en">Stylised illustration of your progress — not a real screenshot.</span>
+          <span class="i18n__ja">学習の進捗のイメージ図です。実際のスクリーンショットではありません。</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================== privacy -->
+<section class="section section--alt" id="privacy" aria-labelledby="privacy-title">
+  <div class="shell privacy">
+    <div>
+      <p class="section__eyebrow">
+        <span class="i18n__en">Privacy</span><span class="i18n__ja">プライバシー</span>
+      </p>
+      <h2 class="section__title" id="privacy-title">
+        <span class="i18n__en">Private by design</span>
+        <span class="i18n__ja">プライバシーを最重要視した設計</span>
+      </h2>
+      <p class="section__lead">
+        <span class="i18n__en">BJT Trainer is built to be used privately and offline. In the current Android release there is nothing to sign up for and nothing being reported back.</span>
+        <span class="i18n__ja">BJT Trainer は、プライベートかつオフラインで使うことを前提に設計されています。現在の Android 版には、登録するものも、送信されるデータもありません。</span>
+      </p>
+
+      <div class="privacy__actions">
+        <a class="btn btn--primary" href="privacy.html">
+          <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#i-lock"></use></svg>
+          <span class="i18n__en">Privacy Policy</span><span class="i18n__ja">プライバシーポリシー</span>
+        </a>
+      </div>
+    </div>
+
+    <ul class="checklist">
+      <li>
+        <span class="checklist__mark"><svg aria-hidden="true" focusable="false"><use href="#i-user-x"></use></svg></span>
+        <span>
+          <span class="checklist__title">
+            <span class="i18n__en">No account required</span>
+            <span class="i18n__ja">アカウント不要</span>
+          </span>
+          <span class="checklist__text i18n--block">
+            <span class="i18n__en">Open the app and start studying. There is no sign-up, no email address and no password.</span>
+            <span class="i18n__ja">アプリを起動すれば、すぐに学習を始められます。登録もメールアドレスもパスワードも不要です。</span>
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class="checklist__mark"><svg aria-hidden="true" focusable="false"><use href="#i-eye-off"></use></svg></span>
+        <span>
+          <span class="checklist__title">
+            <span class="i18n__en">No analytics</span>
+            <span class="i18n__ja">アクセス解析なし</span>
+          </span>
+          <span class="checklist__text i18n--block">
+            <span class="i18n__en">BJT Trainer contains no analytics or telemetry SDK, so your study behaviour is not measured or tracked.</span>
+            <span class="i18n__ja">BJT Trainer にはアクセス解析や計測 SDK が含まれていません。学習の行動が計測・追跡されることはありません。</span>
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class="checklist__mark"><svg aria-hidden="true" focusable="false"><use href="#i-ban"></use></svg></span>
+        <span>
+          <span class="checklist__title">
+            <span class="i18n__en">No advertising</span>
+            <span class="i18n__ja">広告なし</span>
+          </span>
+          <span class="checklist__text i18n--block">
+            <span class="i18n__en">There is no advertising SDK and no ad network. No ads are shown anywhere in the app.</span>
+            <span class="i18n__ja">広告 SDK や広告ネットワークは使用しておらず、アプリ内のどこにも広告は表示されません。</span>
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class="checklist__mark"><svg aria-hidden="true" focusable="false"><use href="#i-offline"></use></svg></span>
+        <span>
+          <span class="checklist__title">
+            <span class="i18n__en">No internet needed</span>
+            <span class="i18n__ja">通信は不要</span>
+          </span>
+          <span class="checklist__text i18n--block">
+            <span class="i18n__en">Normal use does not require a network connection, and the app does not send your activity anywhere.</span>
+            <span class="i18n__ja">通常の利用にネットワーク接続は必要なく、アプリの動作内容がどこかへ送信されることもありません。</span>
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class="checklist__mark"><svg aria-hidden="true" focusable="false"><use href="#i-phone"></use></svg></span>
+        <span>
+          <span class="checklist__title">
+            <span class="i18n__en">Stored on your device</span>
+            <span class="i18n__ja">端末の中に保存</span>
+          </span>
+          <span class="checklist__text i18n--block">
+            <span class="i18n__en">Study progress, bookmarks and session history are stored locally on your device and nowhere else.</span>
+            <span class="i18n__ja">学習の進捗、ブックマーク、セッション履歴は端末の中にのみ保存され、他のどこにも保存されません。</span>
+          </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="shell">
+    <p class="privacy__note">
+      <span class="i18n__en">Because your data is never uploaded, there is no server-side copy to request or delete. Uninstalling the app, or clearing its storage from your device settings, removes your study history.</span>
+      <span class="i18n__ja">データをどこにも送信しないため、サーバー上に削除を依頼するデータも存在しません。アプリをアンインストールするか、端末の設定からアプリのストレージを消去すると、学習履歴は削除されます。</span>
+    </p>
+  </div>
+</section>
+
+<!-- ===================================================== about / disclaimer -->
+<section class="section section--dark" id="about" aria-labelledby="about-title">
+  <div class="shell about">
+    <div>
+      <p class="section__eyebrow">
+        <span class="i18n__en">About</span><span class="i18n__ja">概要</span>
+      </p>
+      <h2 class="section__title" id="about-title">
+        <span class="i18n__en">An independent study app.</span>
+        <span class="i18n__ja">独立した学習アプリです。</span>
+      </h2>
+    </div>
+
+    <div class="notice">
+      <p class="notice__title">
+        <svg aria-hidden="true" focusable="false"><use href="#i-info"></use></svg>
+        <span class="i18n__en">Not official exam material</span>
+        <span class="i18n__ja">公式の試験教材ではありません</span>
+      </p>
+      <p class="notice__text">
+        <span class="i18n__en">BJT Trainer is an independent study application with original Business Japanese practice material. It is not official BJT/JETRO exam material and is not affiliated with or endorsed by the official test or its organisers.</span>
+        <span class="i18n__ja">BJT Trainer は、オリジナルのビジネス日本語練習教材を使った独立した学習アプリです。公式の BJT／JETRO の試験教材ではなく、公式試験およびその主催者とはいかなる関係もなく、推奨や後援も行っていません。</span>
+      </p>
+    </div>
+
+    <ul class="about__list">
+      <li>
+        <span class="i18n__en">Every question in BJT Trainer was written for this app. None were taken from real BJT exams, and no official BJT or JETRO material is reproduced here.</span>
+        <span class="i18n__ja">BJT Trainer の問題はすべてこのアプリのために書かれたものです。実際の BJT 試験問題から抜粋したものではなく、公式の BJT／JETRO の教材を転載したものでもありません。</span>
+      </li>
+      <li>
+        <span class="i18n__en">Scores and percentages in the app are practice metrics only. They are not official BJT levels and do not predict exam results.</span>
+        <span class="i18n__ja">アプリに表示されるスコアや割合は練習上の指標です。公式の BJT レベルを示すものではなく、試験結果を予測するものでもありません。</span>
+      </li>
+      <li>
+        <span class="i18n__en">No official BJT/JETRO logos, marks or trademarks are used on this website or in the app.</span>
+        <span class="i18n__ja">本ウェブサイトおよびアプリでは、公式の BJT／JETRO のロゴ・マーク・商標を一切使用していません。</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================================================== download -->
+<section class="section section--alt" id="download" aria-labelledby="download-title">
+  <div class="shell">
+    <div class="section__head">
+      <p class="section__eyebrow">
+        <span class="i18n__en">Get the app</span><span class="i18n__ja">アプリを入手</span>
+      </p>
+      <h2 class="section__title" id="download-title">
+        <span class="i18n__en">BJT Trainer for Android</span>
+        <span class="i18n__ja">Android 版の BJT Trainer</span>
+      </h2>
+    </div>
+
+    <div class="download">
+      <div>
+        <div class="download__id">
+          <span class="download__name">BJT Trainer <span data-config="version">1.0.0</span></span>
+          <span class="download__version" data-config="androidMinVersion">Android 9.0 (API 28) or later</span>
+          <span class="status-pill" data-dl="pending">
+            <span class="i18n__en">Coming soon</span><span class="i18n__ja">準備中</span>
+          </span>
+          <span class="status-pill" data-dl="ready" style="background:rgba(126,201,150,.16);border-color:rgba(126,201,150,.45);color:#c7ecd6">
+            <span class="i18n__en">Available</span><span class="i18n__ja">公開中</span>
+          </span>
+        </div>
+
+        <p class="download__text" data-dl="pending">
+          <span class="i18n__en">The Android release is currently being prepared for public distribution. This page will be updated with the download link as soon as it is ready.</span>
+          <span class="i18n__ja">Android 版は現在、公開配布の準備を進めています。準備が整い次第、このページにダウンロードリンクを掲載します。</span>
+        </p>
+
+        <p class="download__text" data-dl="ready">
+          <span class="i18n__en">A signed release build of BJT Trainer for Android, offered here as a direct APK download. It is free, needs no account, and runs entirely offline once installed.</span>
+          <span class="i18n__ja">BJT Trainer の Android 版（署名済みリリースビルド）を、APK の直接ダウンロードとして掲載しています。無料で、アカウントは不要で、インストール後はオフラインで動作します。</span>
+        </p>
+
+        <div class="install-note" data-dl="ready">
+          <p class="install-note__head">
+            <svg aria-hidden="true" focusable="false" width="16" height="16"><use href="#i-info"></use></svg>
+            <span class="i18n__en">Installing the APK</span><span class="i18n__ja">APK のインストールについて</span>
+          </p>
+          <p class="install-note__body">
+            <span class="i18n__en">This is a direct APK download rather than a store install. Android will ask you to allow installation from the browser or file manager you opened it with — follow the normal Android installation prompt and continue when you are happy to. You can remove BJT Trainer later in your device's Apps settings.</span>
+            <span class="i18n__ja">これはストア経由ではなく、APK の直接ダウンロードです。Android が、ダウンロードしたファイルを開いたブラウザやファイルマネージャーからのインストールを許可するか確認します。内容を確認したうえで、Android の通常のインストール手順に従って進めてください。アプリ自体は、後から端末のアプリ設定でアンインストールできます。</span>
+          </p>
+          <p class="install-note__body">
+            <span class="i18n__en">BJT Trainer is not listed on Google Play, so this page is the only place to get it. Keep the file name BJT-Trainer-1.0.0.apk exactly as downloaded.</span>
+            <span class="i18n__ja">BJT Trainer は Google Play では公開していません。このページが唯一の入手方法です。ファイル名はダウンロードしたままの BJT-Trainer-1.0.0.apk のままにしてください。</span>
+          </p>
+          <p class="install-note__meta">
+            <span class="install-note__file">BJT-Trainer-1.0.0.apk · <span data-config="androidFileSizeLabel">153.2 MB</span></span>
+            <span class="install-note__hash">SHA-256 <span data-config="androidFileSha256">E0D54B13C0D03D162774BE088FC92537B98B50BED277992E7CD8E4A890052D07</span></span>
+          </p>
+        </div>
+
+        <p class="download__fine">
+          <span class="i18n__en">Free · no account · no ads · no analytics · works offline after installation · currently available for Android.</span>
+          <span class="i18n__ja">無料 · アカウント不要 · 広告なし · アクセス解析なし · インストール後はオフラインで動作 · 現在 Android のみで提供。</span>
+        </p>
+      </div>
+
+      <div class="download__cta">
+        <button type="button" class="btn btn--primary" data-download-btn aria-disabled="true" aria-describedby="download-note">
+          <svg aria-hidden="true" focusable="false" width="18" height="18"><use href="#i-download"></use></svg>
+          <span class="i18n__en">Download for Android</span><span class="i18n__ja">Android 版をダウンロード</span>
+        </button>
+  <p class="download__note" id="download-note" data-dl="pending">
+    <span class="i18n__en">Android download coming soon</span><span class="i18n__ja">Android 版は準備中です</span>
+  </p>
+        <p class="download__note" data-dl="ready">
+          <span class="i18n__en">Direct APK download · no account needed</span><span class="i18n__ja">APK の直接ダウンロード · アカウント不要</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================================================== footer -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div>
+        <p class="brand">
+          <svg class="brand__mark" aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+          <span class="brand__name">BJT Trainer</span>
+        </p>
+        <p class="footer__blurb">
+          <span class="i18n__en">An offline-first Android study app with original Business Japanese practice questions, audio and a mock exam. No account, no ads, no analytics.</span>
+          <span class="i18n__ja">オリジナルのビジネス日本語練習問題と音声、モック試験を備えた、オフライン優先の Android 学習アプリです。アカウントも広告もアクセス解析もありません。</span>
+        </p>
+        <p class="footer__blurb">
+          <span class="i18n__en">Version <span data-config="version">1.0.0</span></span>
+          <span class="i18n__ja">バージョン <span data-config="version">1.0.0</span></span>
+        </p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h2 class="visually-hidden-heading">
+          <span class="i18n__en">Footer</span><span class="i18n__ja">フッター</span>
+        </h2>
+        <ul>
+          <li><a href="#features"><span class="i18n__en">Features</span><span class="i18n__ja">機能</span></a></li>
+          <li><a href="#practice"><span class="i18n__en">Practice</span><span class="i18n__ja">練習</span></a></li>
+          <li><a href="privacy.html"><span class="i18n__en">Privacy Policy</span><span class="i18n__ja">プライバシーポリシー</span></a></li>
+          <li><a href="#about"><span class="i18n__en">About</span><span class="i18n__ja">概要</span></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>
+        <span class="i18n__en">© 2026 BJT Trainer</span>
+        <span class="i18n__ja">© 2026 BJT Trainer</span>
+      </p>
+      <p>
+        <span class="i18n__en">Independent study app. Not affiliated with or endorsed by BJT/JETRO.</span>
+        <span class="i18n__ja">独立した学習アプリです。BJT／JETRO とは関係も推奨もありません。</span>
+      </p>
+    </div>
+
+    <p class="footer__legal">
+      <span class="i18n__en">BJT Trainer is an independent study application with original Business Japanese practice material. It is not official BJT/JETRO exam material and is not affiliated with or endorsed by the official test or its organisers.</span>
+        <span class="i18n__ja">BJT Trainer は、オリジナルのビジネス日本語練習教材を使った独立した学習アプリです。公式の BJT／JETRO の試験教材ではなく、公式試験およびその主催者とはいかなる関係もなく、推奨や後援も行っていません。</span>
+    </p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

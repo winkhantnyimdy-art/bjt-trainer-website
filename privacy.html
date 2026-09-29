@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy Policy — BJT Trainer 1.0.0 (Android)</title>
+<meta name="description" content="How BJT Trainer 1.0.0 for Android handles data: no account, no analytics, no advertising, no network required, and all study progress stored locally on your device.">
+<meta name="theme-color" content="#1E3A5F">
+<meta name="color-scheme" content="light">
+<meta name="format-detection" content="telephone=no">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<link rel="manifest" href="assets/site.webmanifest">
+<meta name="application-name" content="BJT Trainer">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BJT Trainer">
+<meta property="og:title" content="Privacy Policy — BJT Trainer 1.0.0 (Android)">
+<meta property="og:description" content="No account, no analytics, no advertising. BJT Trainer works offline and keeps study progress on your device only.">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta name="twitter:card" content="summary">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body
+  data-title-en="Privacy Policy — BJT Trainer 1.0.0 (Android)"
+  data-title-ja="プライバシーポリシー — BJT Trainer 1.0.0（Android）">
+
+<a class="skip-link" href="#main">
+  <span class="i18n__en">Skip to main content</span><span class="i18n__ja">本文へスキップ</span>
+</a>
+
+<!-- ===================================================== icon sprite -->
+<svg class="sprite" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+<symbol id="i-logo" viewBox="0 0 100 100">
+  <rect width="100" height="100" rx="20" fill="#1E3A5F"/>
+  <text x="50" y="50.8" text-anchor="middle" fill="#FFFFFF" font-family="Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="27.5" font-weight="700" letter-spacing="-0.4">BJT</text>
+  <rect x="22.4" y="70.3" width="55.7" height="4.7" fill="#D23434"/>
+</symbol>
+<symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 10.4V8a5.4 5.4 0 0 1 10.8 0v2.4"/><rect x="4.2" y="10.4" width="15.6" height="10.4" rx="2.2"/></symbol>
+<symbol id="i-offline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 18.4a4.2 4.2 0 0 1 .5-8.37A5.6 5.6 0 0 1 17.5 9.3a4 4 0 0 1-.4 9.1"/><path d="M3 3 21 21"/></symbol>
+<symbol id="i-user-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15.4 20.4v-1.7a4 4 0 0 0-4-4H6.2a4 4 0 0 0-4 4v1.7"/><circle cx="8.8" cy="7.4" r="3.6"/><path d="m16.8 16.8 4.6 4.6"/><path d="m21.4 16.8-4.6 4.6"/></symbol>
+<symbol id="i-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.6 2.6 21.4 21.4"/><path d="M10.4 6.1A9.6 9.6 0 0 1 12 6c5 0 9 4.4 10 6-.4.6-1.2 1.7-2.5 2.8"/><path d="M6.4 8.2C3.7 9.7 2.3 11.3 2 12c1 1.6 5 6 10 6 1.5 0 2.9-.4 4.1-1"/><path d="M9.8 9.9a3 3 0 0 0 4.3 4.2"/></symbol>
+<symbol id="i-ban" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.8"/><path d="m5.8 5.8 12.4 12.4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.4" width="12" height="19.2" rx="2.6"/><path d="M10.4 18.4h3.2"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8 5 5.8v5.4c0 4.2 2.8 7.9 7 9.3 4.2-1.4 7-5.1 7-9.3V5.8l-7-3Z"/><path d="m9.2 11.8 2 2 3.6-3.9"/></symbol>
+<symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 2.6 20.4h18.8L12 3.6Z"/><path d="M12 9.6v4.4"/><path d="M12 17.4h.01"/></symbol>
+<symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.8"/><path d="M12 11.2v5"/><path d="M12 7.7h.01"/></symbol>
+<symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.2"/><path d="m3.6 7 8.4 5.6L20.4 7"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12H5"/><path d="m11 18-6-6 6-6"/></symbol>
+<symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.4v11.2"/><path d="m7.4 10.6 4.6 4.6 4.6-4.6"/><path d="M4.4 19.4h15.2"/></symbol>
+</svg>
+
+<!-- ===================================================== site header -->
+<header class="site-header">
+  <div class="shell header__bar">
+      <a class="brand" href="index.html" aria-label="BJT Trainer">
+        <svg class="brand__mark" aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+        <span class="brand__name" aria-hidden="true">BJT Trainer</span>
+    </a>
+
+    <nav class="site-nav" id="site-nav" data-nav aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="index.html#features"><span class="i18n__en">Features</span><span class="i18n__ja">機能</span></a></li>
+        <li><a class="nav__link" href="index.html#practice"><span class="i18n__en">Practice</span><span class="i18n__ja">練習</span></a></li>
+        <li><a class="nav__link" href="privacy.html" aria-current="page"><span class="i18n__en">Privacy</span><span class="i18n__ja">プライバシー</span></a></li>
+        <li><a class="nav__link" href="index.html#about"><span class="i18n__en">About</span><span class="i18n__ja">概要</span></a></li>
+      </ul>
+      <div class="nav__panel-actions">
+        <a class="btn btn--primary btn--sm" href="index.html#download">
+          <span class="i18n__en">Download</span><span class="i18n__ja">ダウンロード</span>
+        </a>
+      </div>
+    </nav>
+
+    <div class="header__actions">
+      <div class="lang" role="group" aria-label="Language / 言語">
+        <button type="button" class="lang__btn" data-lang-btn="en" aria-pressed="true" lang="en" aria-label="Switch to English">EN</button>
+        <button type="button" class="lang__btn" data-lang-btn="ja" aria-pressed="false" lang="ja" aria-label="日本語で表示する">日本語</button>
+      </div>
+      <a class="btn btn--primary btn--sm header__download" href="index.html#download">
+        <span class="i18n__en">Download</span><span class="i18n__ja">ダウンロード</span>
+      </a>
+      <button type="button" class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"><span></span></span>
+        <span class="nav-toggle__label i18n__en">Menu</span><span class="nav-toggle__label i18n__ja">メニュー</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<p id="lang-status" class="sr-only" aria-live="polite" role="status"></p>
+
+<main id="main">
+
+<section class="section">
+  <div class="shell">
+
+    <p class="backlink">
+      <svg aria-hidden="true" focusable="false"><use href="#i-arrow-left"></use></svg>
+      <a href="index.html">
+        <span class="i18n__en">Back to BJT Trainer</span>
+        <span class="i18n__ja">BJT Trainer のページへ戻る</span>
+      </a>
+    </p>
+
+    <div class="prose">
+
+      <h1>
+        <span class="i18n__en">Privacy Policy</span>
+        <span class="i18n__ja">プライバシーポリシー</span>
+      </h1>
+
+      <div class="prose__meta">
+        <dl>
+          <dt>
+            <span class="i18n__en">Applies to</span>
+            <span class="i18n__ja">適用対象</span>
+          </dt>
+          <dd>
+            <span class="i18n__en">BJT Trainer for Android, version</span>
+            <span class="i18n__ja">BJT Trainer（Android 版）バージョン</span>
+            <span data-config="version">1.0.0</span>
+          </dd>
+
+          <dt>
+            <span class="i18n__en">Last updated</span>
+            <span class="i18n__ja">最終更新日</span>
+          </dt>
+          <dd>
+            <span class="i18n__en" data-config="privacyLastUpdated" data-config-lang="en">September 2026</span>
+            <span class="i18n__ja" data-config="privacyLastUpdated" data-config-lang="ja">2026年9月</span>
+          </dd>
+
+          <dt>
+            <span class="i18n__en">Application ID</span>
+            <span class="i18n__ja">アプリケーション ID</span>
+          </dt>
+          <dd data-config="androidPackageId">com.bjttrainer.app</dd>
+
+          <dt>
+            <span class="i18n__en">Requires</span>
+            <span class="i18n__ja">動作環境</span>
+          </dt>
+          <dd data-config="androidMinVersion">Android 9.0 (API 28) or later</dd>
+        </dl>
+      </div>
+
+      <p class="lead">
+        <span class="i18n__en">BJT Trainer is an offline-first Android study app. Normal use does not need an internet connection. The app has no account system, no analytics and no advertising, and it does not intentionally collect or transmit personal information. Everything the app remembers — your study progress, bookmarks and session history — is written to your device's own storage.</span>
+        <span class="i18n__ja">BJT Trainer は、オフライン優先の Android 学習アプリです。通常の利用でインターネット接続は必要ありません。アプリにはアカウントの仕組みも、アクセス解析も、広告もなく、個人情報を意図的に収集・送信することもありません。アプリが記憶する内容（学習の進捗、ブックマーク、セッションの履歴）は、すべて端末のストレージに保存されます。</span>
+      </p>
+
+      <div class="prose__callout">
+        <p>
+          <span class="i18n__en"><strong>A note on this document:</strong> this is a plain-language product description written by the developer of BJT Trainer. It is not a legal certification, and it does not create any rights or obligations beyond what the app actually does.</span>
+          <span class="i18n__ja"><strong>本ポリシーについて：</strong>これは BJT Trainer の開発者が作成した分かりやすい製品説明です。法的認証ではなく、アプリが実際に行っていること以外の権利や義務を生むものではありません。</span>
+        </p>
+      </div>
+
+      <h2>
+        <span class="i18n__en">1. Scope</span>
+        <span class="i18n__ja">1. 適用範囲</span>
+      </h2>
+      <p>
+        <span class="i18n__en">This policy describes BJT Trainer for Android, version 1.0.0, as published in the current Android release. It covers the app itself. This website is a static site with no server-side processing and no database; the "About this website" section at the end covers it.</span>
+        <span class="i18n__ja">本ポリシーは、現在公開されている Android 版 BJT Trainer バージョン 1.0.0 について説明します。対象はアプリ本体です。本ウェブサイトはサーバー側の処理やデータベースを用いない静的サイトで、末尾の「このウェブサイトについて」の項で説明します。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">2. No account required</span>
+        <span class="i18n__ja">2. アカウントは不要</span>
+      </h2>
+      <p>
+        <span class="i18n__en">BJT Trainer has no account system. The app never asks for an email address, a password, a phone number or any other identifier, and there is no way to sign in or sign up. Opening the app is all that is required to start studying.</span>
+        <span class="i18n__ja">BJT Trainer にアカウントの仕組みはありません。アプリがメールアドレス、パスワード、電話番号などの識別情報を求めることはなく、登録やログインの方法もありません。学習を始めるには、アプリを起動するだけです。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">3. No analytics or tracking</span>
+        <span class="i18n__ja">3. アクセス解析・追跡は行いません</span>
+      </h2>
+      <p>
+        <span class="i18n__en">The app contains no analytics, telemetry, crash-reporting or usage-tracking SDK. BJT Trainer does not measure how you study, how long you study, or which questions you answer, and it has no mechanism for sending any such information anywhere. There is no device identifier or advertising identifier that the app reads.</span>
+        <span class="i18n__ja">アプリには、アクセス解析・計測・クラッシュ報告・利用状況の追跡を行う SDK は含まれていません。BJT Trainer は学習のしかたを測定せず、解答した時間を計測せず、このような情報をどこへ送信する仕組みも持っていません。アプリが読み取る端末識別子や広告識別子もありません。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">4. No advertising</span>
+        <span class="i18n__ja">4. 広告はありません</span>
+      </h2>
+      <p>
+        <span class="i18n__en">The app contains no advertising SDK and is not connected to any advertising network. No advertisements are displayed anywhere in the app, and no advertising identifier is collected, stored or shared.</span>
+        <span class="i18n__ja">アプリには広告 SDK が含まれておらず、広告ネットワークにも接続していません。アプリ内のどこにも広告は表示されず、広告識別子を収集・保存・共有することもありません。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">5. No network connection required</span>
+        <span class="i18n__ja">5. ネットワーク接続は不要</span>
+      </h2>
+      <p>
+        <span class="i18n__en">Normal use of BJT Trainer does not require an internet connection. Study content, listening audio, images and your progress are all stored on the device, and the app does not send your activity to a server. In practice, once the app is installed, everything works with the device in aeroplane mode.</span>
+        <span class="i18n__ja">BJT Trainer の通常の利用に、インターネット接続は必要ありません。学習コンテンツ、リスニング音声、画像、進捗はすべて端末内に保存されており、アプリの動作内容がサーバーに送信されることはありません。実際には、アプリをインストールすれば、端末を機内モードにしてもすべての機能が動作します。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">6. Data stored on your device</span>
+        <span class="i18n__ja">6. 端末内に保存されるデータ</span>
+      </h2>
+      <p>
+        <span class="i18n__en">The following is written to the app's private storage on your device so that your progress survives between sessions:</span>
+        <span class="i18n__ja">次の情報は、セッションをまたいで学習の進捗を維持するため、端末上のアプリの非公開ストレージに保存されます。</span>
+      </p>
+      <ul>
+        <li>
+          <span class="i18n__en">study progress and per-category completion</span>
+          <span class="i18n__ja">学習の進捗とカテゴリーごとの達成状況</span>
+        </li>
+        <li>
+          <span class="i18n__en">question attempt history and accuracy figures</span>
+          <span class="i18n__ja">問題を解いた履歴と正答率</span>
+        </li>
+        <li>
+          <span class="i18n__en">bookmarked questions</span>
+          <span class="i18n__ja">ブックマークした問題</span>
+        </li>
+        <li>
+          <span class="i18n__en">questions recorded for mistake review</span>
+          <span class="i18n__ja">復習用に記録された間違えた問題</span>
+        </li>
+        <li>
+          <span class="i18n__en">practice session history, including mock exam results</span>
+          <span class="i18n__ja">練習セッションの履歴（モック試験の結果を含む）</span>
+        </li>
+        <li>
+          <span class="i18n__en">app preferences such as appearance and theme</span>
+          <span class="i18n__ja">外観やテーマなどのアプリの設定</span>
+        </li>
+      </ul>
+      <p>
+        <span class="i18n__en">This data stays on your device. It is not uploaded, and it is not synchronised to any other device, account or service. There is no cloud copy and no backup copy on a server.</span>
+        <span class="i18n__ja">これらのデータは端末の中に留まります。アップロードされることはなく、ほかの端末・アカウント・サービスに同期されることもありません。クラウド上のコピーもサーバー上のバックアップも存在しません。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">7. Deleting your data</span>
+        <span class="i18n__ja">7. データの削除</span>
+      </h2>
+      <p>
+        <span class="i18n__en">Because your data never leaves your device, there is no server-side copy to request or delete. You can remove it at any time, using any of these methods:</span>
+        <span class="i18n__ja">データは端末外に出ることはないため、サーバー上のコピーを請求したり削除したりする必要はありません。次のいずれかの方法で、いつでも削除できます。</span>
+      </p>
+      <ul>
+        <li>
+          <span class="i18n__en">Use <strong>Reset study progress</strong> or <strong>Clear bookmarks</strong> in the app's Settings screen.</span>
+          <span class="i18n__ja">アプリの設定画面で「学習進捗をリセット」または「ブックマークを消去」を実行する。</span>
+        </li>
+        <li>
+          <span class="i18n__en">Clear the app's storage from your device's system settings.</span>
+          <span class="i18n__ja">端末のシステム設定からアプリのストレージを消去する。</span>
+        </li>
+        <li>
+          <span class="i18n__en">Uninstall the app.</span>
+          <span class="i18n__ja">アプリをアンインストールする。</span>
+        </li>
+      </ul>
+      <p>
+        <span class="i18n__en">Any of these removes your local study data permanently. Because nothing is stored on a server, there is nothing further to delete elsewhere. This is a direct consequence of the app not uploading your data in the first place.</span>
+        <span class="i18n__ja">いずれの操作でも、端末内の学習データは完全に削除されます。サーバーに保存されているものは何もないため、ほかの場所で削除必要はありません。これは、そもそもアプリがデータをアップロードしていないということに基づく結果です。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">8. Listening audio and study material</span>
+        <span class="i18n__ja">8. リスニング音声と学習教材について</span>
+      </h2>
+      <p>
+        <span class="i18n__en">Some listening audio in BJT Trainer was generated with the VOICEVOX text-to-speech engine (voices: 玄野武宏, 青山龍星, 雨晴はう, No.7). The audio files are bundled with the app rather than downloaded at runtime, and the app does not contact any third-party speech service while you use it. No third-party text-to-speech or transcription service is used by the app.</span>
+        <span class="i18n__ja">一部のリスニング音声は、VOICEVOX の音声合成（声：玄野武宏、青山龍星、雨晴はう、No.7）で生成しています。音声ファイルは実行時にダウンロードするのではなくアプリに同梱されており、利用中に第三者の音声合成サービスに接続することはありません。アプリが第三者の音声合成・文字認識サービスを利用することはありません。</span>
+      </p>
+      <p>
+        <span class="i18n__en">BJT Trainer contains original Business Japanese practice material written for this app. It is not official BJT/JETRO exam material, it is not affiliated with or endorsed by the official test or its organisers, and no questions have been taken from real BJT exams. Scores and percentages shown in the app are practice metrics and are not official BJT levels.</span>
+        <span class="i18n__ja">BJT Trainer には、このアプリのために書かれたオリジナルのビジネス日本語練習問題を収録しています。公式の BJT／JETRO の試験教材ではなく、公式試験およびその主催者とはいかなる関係もなく、推奨や後援も行っていません。実際の BJT 試験問題から抜粋した問題はありません。アプリに表示されるスコアや割合は練習上の指標であり、公式の BJT レベルを示すものではありません。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">9. Changes to this policy</span>
+        <span class="i18n__ja">9. 本ポリシーの変更</span>
+      </h2>
+      <p>
+        <span class="i18n__en">If a future version of BJT Trainer changes its functionality — for example by adding a feature that needs a network connection, or by including a third-party library that changes how data is handled — this policy will be updated to match, and the "Last updated" date above will change. The version and date at the top of this page always describe the release this policy applies to.</span>
+        <span class="i18n__ja">今後のバージョンで機能が変更された場合（たとえばネットワーク接続を必要とする機能の追加や、データの取扱いを変更する外部ライブラリの組み込みなど）、本ポリシーはそれに合わせて更新され、上部の「最終更新日」も変更されます。ページ冒頭に記載しているバージョンと日付は、本ポリシーが適用されるリリースを示します。</span>
+      </p>
+
+      <h2>
+        <span class="i18n__en">10. Contact</span>
+        <span class="i18n__ja">10. お問い合わせ</span>
+      </h2>
+      <p>
+        <span class="i18n__en">BJT Trainer 1.0.0 collects, transmits and stores no personal data, and the app has no server-side component. No support address is listed on this page yet; one will be published here before any later release.</span>
+        <span class="i18n__ja">BJT Trainer 1.0.0 は個人データを収集・送信・保存せず、サーバーの要素もありません。本ページには現在サポート用の連絡先を掲載していません。以降のリリースの前に、ここへ掲載します。</span>
+      </p>
+
+      <!-- Populated by js/app.js from js/config.js only when a real address is
+           configured. Hidden entirely while the placeholder is in place, so
+           visitors never see an unfinished token. -->
+      <div class="contact-card" data-contact hidden>
+        <p class="contact-card__title">
+          <svg aria-hidden="true" focusable="false" style="width:18px;height:18px;display:inline-block;vertical-align:-3px;color:var(--navy-700)"><use href="#i-mail"></use></svg>
+          <span class="i18n__en">Support</span><span class="i18n__ja">サポート</span>
+        </p>
+        <p>
+          <span class="i18n__en">Email:</span><span class="i18n__ja">メール:</span>
+          <a data-contact-email href="#">support@example.invalid</a>
+        </p>
+        <p>
+          <a data-contact-url href="#" hidden>
+            <span class="i18n__en">Support page</span><span class="i18n__ja">サポートページ</span>
+          </a>
+        </p>
+      </div>
+
+      <h2>
+        <span class="i18n__en">About this website</span>
+        <span class="i18n__ja">このウェブサイトについて</span>
+      </h2>
+      <p>
+        <span class="i18n__en">This website is a static site. It has no backend, no database and no server-side processing, and it does not set any cookies. It contains no analytics and no advertising. The only thing stored in your browser is your language preference (English or Japanese), which is kept in your browser's local storage so that your choice is remembered when you return. It is never transmitted anywhere. You can erase it at any time by clearing site data for this site in your browser settings.</span>
+        <span class="i18n__ja">このウェブサイトは静的サイトです。バックエンドもデータベースもサーバー側の処理も持たず、Cookie も設定しません。アクセス解析や広告も設置していません。ブラウザーに保存されるものは表示言語（英語・日本語）の設定のみで、次回以降の訪問時に同じ言語で表示されるように、ブラウザーのローカルストレージに保存しています。この情報がどこかへ送信されることはありません。ブラウザーの設定からこのサイトのデータを消去すれば、いつでも削除できます。</span>
+      </p>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================================================== footer -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer__top">
+      <div>
+        <p class="brand">
+          <svg class="brand__mark" aria-hidden="true" focusable="false"><use href="#i-logo"></use></svg>
+          <span class="brand__name">BJT Trainer</span>
+        </p>
+        <p class="footer__blurb">
+          <span class="i18n__en">An offline-first Android study app with original Business Japanese practice questions, audio and a mock exam. No account, no ads, no analytics.</span>
+          <span class="i18n__ja">オリジナルのビジネス日本語練習問題と音声、モック試験を備えた、オフライン優先の Android 学習アプリです。アカウントも広告もアクセス解析もありません。</span>
+        </p>
+        <p class="footer__blurb">
+          <span class="i18n__en">Version <span data-config="version">1.0.0</span></span>
+          <span class="i18n__ja">バージョン <span data-config="version">1.0.0</span></span>
+        </p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Footer">
+        <h2 class="visually-hidden-heading">
+          <span class="i18n__en">Footer</span><span class="i18n__ja">フッター</span>
+        </h2>
+        <ul>
+          <li><a href="index.html#features"><span class="i18n__en">Features</span><span class="i18n__ja">機能</span></a></li>
+          <li><a href="index.html#practice"><span class="i18n__en">Practice</span><span class="i18n__ja">練習</span></a></li>
+          <li><a href="privacy.html" aria-current="page"><span class="i18n__en">Privacy Policy</span><span class="i18n__ja">プライバシーポリシー</span></a></li>
+          <li><a href="index.html#about"><span class="i18n__en">About</span><span class="i18n__ja">概要</span></a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="footer__bottom">
+      <p>
+        <span class="i18n__en">© 2026 BJT Trainer</span>
+        <span class="i18n__ja">© 2026 BJT Trainer</span>
+      </p>
+      <p>
+        <span class="i18n__en">Independent study app. Not affiliated with or endorsed by BJT/JETRO.</span>
+        <span class="i18n__ja">独立した学習アプリです。BJT／JETRO とは関係も推奨もありません。</span>
+      </p>
+    </div>
+
+    <p class="footer__legal">
+      <span class="i18n__en">BJT Trainer is an independent study application with original Business Japanese practice material. It is not official BJT/JETRO exam material and is not affiliated with or endorsed by the official test or its organisers.</span>
+      <span class="i18n__ja">BJT Trainer は、オリジナルのビジネス日本語練習教材を使った独立した学習アプリです。公式の BJT／JETRO の試験教材ではなく、公式試験およびその主催者とはいかなる関係もなく、推奨や後援も行っていません。</span>
+    </p>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

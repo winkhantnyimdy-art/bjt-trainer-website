@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="BJT Trainer">
+  <title>BJT Trainer</title>
+  <!--
+    Web representation of the BJT Trainer Android launcher icon.
+    Reproduced from the app's own icon spec (navy #1E3A5F tile, white
+    "BJT" wordmark, thin #D23434 rule beneath). No third-party artwork.
+  -->
+  <rect width="100" height="100" rx="20" fill="#1E3A5F"/>
+  <text x="50" y="50.8"
+        text-anchor="middle"
+        fill="#FFFFFF"
+        font-family="Roboto, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif"
+        font-size="27.5"
+        font-weight="700"
+        letter-spacing="-0.4">BJT</text>
+  <rect x="22.4" y="70.3" width="55.7" height="4.7" fill="#D23434"/>
+</svg>

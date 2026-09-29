@@ -1,0 +1,33 @@
+# Line endings are deterministic for this project.
+#
+# The repository is hosted on Windows (core.autocrlf=true is set globally),
+# but every text file in the project is authored and stored with LF endings.
+# `eol=lf` overrides the global autocrlf behaviour so that:
+#   - text is stored as LF in the repository, and
+#   - text is checked out as LF on any machine, including this one.
+# This removes the "LF will be replaced by CRLF" warnings and means a clone
+# from any host produces byte-identical text files.
+
+* text=auto eol=lf
+
+# Binary assets are never touched or line-ending converted.
+
+*.apk    binary
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.webp   binary
+*.ico    binary
+*.mp3    binary
+*.m4a    binary
+*.ogg    binary
+*.wav    binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.zip    binary
+*.jar    binary
+*.jks    binary
+*.keystore binary

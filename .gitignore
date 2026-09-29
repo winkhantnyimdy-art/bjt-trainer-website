@@ -1,0 +1,30 @@
+# QA / tooling output
+.qa/
+out/
+*.log
+
+# Dependencies (the site itself has none; the dev tools do)
+node_modules/
+
+# The signed release APK.
+#
+# BJT-Trainer-1.0.0.apk is 160,574,584 bytes = 153.13 MiB. GitHub hard-blocks
+# any git object over 100 MiB, so tracking it would make this repository
+# impossible to push to GitHub at all (Pages included).
+#
+# The APK is therefore published as a GitHub Release *asset* instead, which is
+# an attachment rather than a git object and is capped at 2 GB. The local copy
+# in downloads/ is kept for verification and is intentionally untracked.
+#
+# The verified file:
+#   size   160574584
+#   sha256 E0D54B13C0D03D162774BE088FC92537B98B50BED277992E7CD8E4A890052D07
+downloads/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+*.swp
