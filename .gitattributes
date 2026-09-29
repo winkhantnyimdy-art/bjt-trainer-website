@@ -12,6 +12,10 @@
 
 # Binary assets are never touched or line-ending converted.
 
+# `.nojekyll` is intentionally an empty marker file. Marking it binary stops
+# git from applying text rules to a zero-byte file.
+/.nojekyll binary
+
 *.apk    binary
 *.png    binary
 *.jpg    binary
