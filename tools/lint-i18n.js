@@ -33,7 +33,9 @@ const PLACEHOLDERS = /CONTACT_EMAIL_TO_BE_ADDED|YOUR-DOMAIN|your-cdn\.example|pl
  * `apk` (lowercase) appears in the published file name.
  * `App`, `Store`, `Safari` and `iPhone` are here because the iPhone web-app
  * install section has to say plainly that no App Store install is needed,
- * name the Safari Share flow, and address iPhone owners directly. */
+ * name the Safari Share flow, and address iPhone owners directly.
+ * `Offline` and `ready` quote the app's English-only "Offline ready"
+ * status line, which the install steps tell the learner to wait for. */
 const LATIN_OK = new Set([
   "BJT", "JETRO", "Android", "HTML", "CSS", "JavaScript", "SDK", "Trainer",
   "Study", "Progress", "Practice", "Home", "Settings", "Mock", "Exam",
@@ -41,7 +43,7 @@ const LATIN_OK = new Set([
   "i18n", "en", "ja", "class", "div", "a", "span", "strong", "p", "id", "href",
   "aria", "pressed", "true", "false", "lang", "btn", "NOT", "MIR", "API",
   "ID", "VOICEVOX", "APK", "apk", "SHA", "Google", "Play",
-  "App", "Store", "Safari", "iPhone",
+  "App", "Store", "Safari", "iPhone", "Offline", "ready",
 ]);
 
 function latinWords(s) {
