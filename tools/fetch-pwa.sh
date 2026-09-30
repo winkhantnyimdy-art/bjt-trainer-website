@@ -19,9 +19,9 @@
 # The result, ./app/, is gitignored. Manual/CLI deploys must run this first.
 set -euo pipefail
 
-PWA_VERSION="1.0.1"
-PWA_ZIP_URL="https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/bjt-trainer-web-1.0.1.zip"
-PWA_SHA256="2db8d51da68133527dcd6587065aeabf3cde0b68f2227cd4fdbebe951474051d"
+PWA_VERSION="1.0.2"
+PWA_ZIP_URL="https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/bjt-trainer-web-1.0.2.zip"
+PWA_SHA256="6992de653acc117fa7d7061a69b905608a392599ab332c1f13321fd399aa0fa7"
 PWA_DIR="app"
 PWA_TMP="$(mktemp /tmp/bjt-pwa.XXXXXX.zip)"
 
