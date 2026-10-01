@@ -21,7 +21,7 @@ set -euo pipefail
 
 PWA_VERSION="1.0.3"
 PWA_ZIP_URL="https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/bjt-trainer-web-1.0.3.zip"
-PWA_SHA256="4f47122a585b919ba22c06aa2353eb2be066edbc4696128befdd27dfd44cd282"
+PWA_SHA256="d17796dad875513ec4a44ffa9336eb18e3fbad5e7ce68d2fb3f0aafea3b4e3ee"
 PWA_DIR="app"
 PWA_TMP="$(mktemp /tmp/bjt-pwa.XXXXXX.zip)"
 
