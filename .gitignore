@@ -8,7 +8,7 @@ node_modules/
 
 # The signed release APK.
 #
-# BJT-Trainer-1.0.0.apk is 160,574,584 bytes = 153.13 MiB. GitHub hard-blocks
+# BJT-Trainer-1.0.0.apk is 154,375,447 bytes = 147.24 MiB. GitHub hard-blocks
 # any git object over 100 MiB, so tracking it would make this repository
 # impossible to push to GitHub at all (Pages included).
 #
@@ -17,17 +17,18 @@ node_modules/
 # in downloads/ is kept for verification and is intentionally untracked.
 #
 # The verified file:
-#   size   160574584
-#   sha256 E0D54B13C0D03D162774BE088FC92537B98B50BED277992E7CD8E4A890052D07
+#   size   154375447
+#   sha256 222F2650444A64910D3AD42A422035D86EAD4C23C8F7ADF42865A4F01BF020F6
 downloads/
 
 # The staged Flutter Web/PWA build.
 #
-# ./app/ is materialized at deploy time by tools/fetch-pwa.sh from the pinned
-# bjt-trainer-web-1.0.0.zip release asset (~141 MB of generated files), so it
-# must never be committed — same policy as downloads/ above. Local copies
-# produced by running the fetch script (for QA or manual deploys) are
-# intentionally untracked.
+# ./app/ is never committed — same policy as downloads/ above, since it is
+# ~135 MB of generated files. It is staged locally from the verified Flutter
+# release build and published by a manual/CLI deploy of this folder; see the
+# top of netlify.toml for the exact model. tools/fetch-pwa.sh is an opt-in
+# helper that can re-materialize ./app/ from the pinned release ZIP and is
+# deliberately NOT part of the default build command.
 app/
 *.zip
 
@@ -38,3 +39,6 @@ desktop.ini
 .idea/
 .vscode/
 *.swp
+
+# Local Netlify folder
+.netlify

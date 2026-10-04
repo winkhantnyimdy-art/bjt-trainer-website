@@ -96,8 +96,8 @@ asset and is what the live download button serves.
 
 ```
 downloads/BJT-Trainer-1.0.0.apk
-160,574,584 bytes  (153.13 MiB)
-SHA-256  E0D54B13C0D03D162774BE088FC92537B98B50BED277992E7CD8E4A890052D07
+154,375,447 bytes  (147.24 MiB)
+SHA-256  222F2650444A64910D3AD42A422035D86EAD4C23C8F7ADF42865A4F01BF020F6
 package  com.bjttrainer.app   versionName 1.0.0   versionCode 1
 min SDK 28   target SDK 36
 signature APK Signature Scheme v2, CN=BJT Trainer Release, O=BJT Trainer, C=JP
@@ -106,7 +106,7 @@ signature APK Signature Scheme v2, CN=BJT Trainer Release, O=BJT Trainer, C=JP
 ### Why the APK is not in git
 
 `downloads/` is listed in `.gitignore`. GitHub **hard-blocks any git object
-larger than 100 MiB**, and this APK is 153.13 MiB. Committing it would make
+larger than 100 MiB**, and this APK is 147.24 MiB. Committing it would make
 this repository impossible to push to GitHub at all — Pages included — so the
 APK is published as a **GitHub Release asset** instead. Assets are attachments
 rather than git objects and are capped at 2 GB.
@@ -183,27 +183,52 @@ visitors never see the placeholder token.
 
 ## 5. Deploying
 
-The live site is **https://bjt-trainer.netlify.app**, deployed from this
-repository's `master` branch. Any static host still works, but only Netlify
-reads `netlify.toml`, so use that when deploying elsewhere.
+The live site is **https://bjt-trainer.netlify.app**. Any static host still
+works, but only Netlify reads `netlify.toml`, so use that when deploying
+elsewhere.
+
+### Deploy model — manual/CLI only
+
+`./app/` (the Flutter Web/PWA build, ~135 MB) and `./downloads/` (the signed
+APK, 147.24 MiB) are both gitignored, because GitHub hard-blocks any git object
+over 100 MiB. A Git-triggered build therefore starts with no release payload at
+all, so it is **not** a supported deploy path. Deploy this folder instead:
+
+```powershell
+# 1. Stage the verified payload: the Flutter release build output into ./app/
+#    and the signed release APK into ./downloads/BJT-Trainer-1.0.0.apk
+# 2. Verify the staged APK against the integrity facts in js/config.js
+#    (qa.js re-hashes it and fails on any mismatch):
+node tools\qa.js "$PWD" "C:\Program Files\Google\Chrome\Application\chrome.exe" "$PWD\.qa"
+# 3. Deploy the folder:
+netlify deploy
+```
+
+`./downloads/` is excluded from the upload by `.netlifyignore` on purpose. The
+public download is the GitHub Release asset named by `androidDownloadUrl`;
+`downloads/` is only the local reference that QA hashes.
 
 ### `netlify.toml` — what actually gets published
 
 The site is plain static files, so there is nothing to compile. `netlify.toml`
-exists purely so the repository root can stay the site root while
-development-only files are still never served:
+verifies the staged payload is present and then strips development-only files,
+so the repository root can stay the site root without ever serving tooling:
 
 ```toml
 [build]
-  command = "rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
+  command = "for f in app/index.html app/manifest.json app/bjt-trainer-sw.js app/main.dart.js downloads/BJT-Trainer-1.0.0.apk; do test -f \"$f\" || { echo \"netlify: staged payload missing $f\"; exit 1; }; done && rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
   publish = "."
 ```
 
-`netlify.toml` takes precedence over the equivalent settings in the Netlify
-UI, so a Git push produces the same publish set with no dashboard
-configuration. `.netlifyignore` covers manual/CLI folder deploys as a second
-layer. `.nojekyll` is only meaningful for GitHub Pages, which is not used.
-`assets/screenshots/` is referenced by comments only, so removing it is safe.
+The build command deliberately no longer runs `tools/fetch-pwa.sh`. That script
+used to download a pinned release ZIP, `rm -rf app`, and unzip over it on every
+build; while its pin was left behind on an older build it silently replaced a
+correctly staged `./app/` with stale files. It is retained only as an opt-in
+helper and is not invoked by the build, so a stale ZIP can no longer overwrite
+a staged payload. `netlify.toml` takes precedence over the equivalent settings
+in the Netlify UI. `.nojekyll` is only meaningful for GitHub Pages, which is not
+used. `assets/screenshots/` is referenced by comments only, so removing it is
+safe.
 
 To add a new development-only file, add it to the `rm -rf` list **and** to
 `.netlifyignore`. To add a new public asset, do neither.

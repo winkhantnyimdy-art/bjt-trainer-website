@@ -1,17 +1,41 @@
-# The site is static, so there is nothing to compile. The build command
-# exists to (1) stage the verified Flutter Web/PWA build under ./app/ and
+# The site is static, so there is nothing to compile. The build command exists
+# to (1) verify that the release payload was staged into this working copy and
 # (2) delete development-only files from the publish directory, so that the
 # repository root can stay the site root without ever serving tooling.
-# ./app/ itself is never committed (see .gitignore): tools/fetch-pwa.sh
-# downloads the pinned release asset, verifies its SHA-256 and unzips it on
-# every build, so Git-triggered deploys always reproduce /app/ and can never
-# silently drop it.
+#
+# DEPLOY MODEL — manual/CLI deploys only.
+#
+# The Flutter Web build (~135 MB) and the signed APK (147.24 MiB) are both too
+# large to commit: GitHub hard-blocks any git object over 100 MiB, so neither
+# ./app/ nor ./downloads/ is tracked (see .gitignore). A Git-triggered build
+# therefore starts with no release payload at all and is not a supported path.
+#
+# The supported flow is:
+#   1. Stage the verified payload locally: ./app/ from the Flutter release
+#      build, ./downloads/BJT-Trainer-1.0.0.apk from the signed release APK.
+#   2. Run `node tools/qa.js`, which re-hashes the staged APK and fails if its
+#      bytes do not match the integrity facts recorded in js/config.js.
+#   3. Deploy this folder: `netlify deploy`.
+#
+# Note that ./downloads/ is excluded from the upload by .netlifyignore on
+# purpose. The public APK download is the GitHub Release asset named by
+# androidDownloadUrl; downloads/ is only the local reference that QA hashes.
+#
+# There is deliberately no download-from-release-asset step in the build
+# command any more. It used to be `bash tools/fetch-pwa.sh`, which pinned one
+# specific web ZIP, did `rm -rf app` and unzipped over it. That script was left
+# pointing at an outdated build, so running it replaced a correctly staged
+# ./app/ with stale files — the exact failure this build command now prevents.
+# The script is retained purely as an opt-in helper (see its own header) and is
+# no longer invoked here, so a stale ZIP can never overwrite a staged payload.
+#
+# The build command fails fast when the staged payload is missing, so a deploy
+# can never publish a site with a broken /app/ or a missing download.
 #
 # netlify.toml takes precedence over the equivalent settings configured in the
-# Netlify UI, so Git-triggered deploys are deterministic with no dashboard
-# configuration required. .netlifyignore covers manual/CLI folder deploys.
+# Netlify UI. .netlifyignore controls what is uploaded.
 [build]
-  command = "bash tools/fetch-pwa.sh && rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
+  command = "for f in app/index.html app/manifest.json app/bjt-trainer-sw.js app/main.dart.js downloads/BJT-Trainer-1.0.0.apk; do test -f \"$f\" || { echo \"netlify: staged payload missing $f\"; exit 1; }; done && rm -rf tools assets/screenshots README.md .nojekyll .netlifyignore .gitattributes .gitignore netlify.toml"
   publish = "."
 
 # Serve /privacy as well as /privacy.html, matching the live site's behaviour.

@@ -615,7 +615,7 @@ const PROBE = (minTap) => {
      integrity facts recorded in js/config.js. Hashing 150+ MB is streamed so
      memory stays flat.
 
-     The APK is untracked in git (153.13 MiB > GitHub's 100 MiB per-object
+     The APK is untracked in git (147.24 MiB > GitHub's 100 MiB per-object
      limit) and is published as a GitHub Release asset, so the local copy in
      downloads/ is the reference that gets uploaded. Verify it whenever it is
      present, whether or not the download is switched on, so a swapped or

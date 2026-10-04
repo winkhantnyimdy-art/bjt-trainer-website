@@ -1,27 +1,36 @@
 #!/usr/bin/env bash
 #
-# Fetch the verified BJT Trainer Web/PWA build into ./app/ at deploy time.
+# OPTIONAL helper: materialize ./app/ from the pinned BJT Trainer Web/PWA ZIP.
 #
-# The production Flutter Web artifact (~141 MB of generated files) is never
-# committed to this repository — the same policy that keeps the 153 MB APK
-# out of git (see .gitignore). It ships as a versioned GitHub Release asset
-# instead, and this script materializes it during every Netlify build, so a
-# fresh Git deploy can never accidentally delete or skew /app/.
+# This script is NOT part of the Netlify build any more. The build command in
+# netlify.toml publishes the ./app/ that was staged locally and verified by
+# tools/qa.js, and it never calls this file.
 #
-# Determinism: the exact release asset URL and its SHA-256 are pinned below.
-# Any mismatch (wrong file, truncated download, silent replacement) fails
-# the build instead of deploying a broken /app/.
+# Why it was removed from the build: it pinned one specific release ZIP, then
+# ran `rm -rf app` and unzipped over it. When the pin was left behind on an
+# older build, running it silently replaced a correctly staged ./app/ with
+# stale files — including a Flutter build whose text theme still fell back to
+# Roboto and needed a network font fetch. Keeping the script reachable but out
+# of the build means a stale ZIP can no longer damage a staged payload by
+# accident.
+#
+# Use it only when you deliberately want ./app/ to come from the release ZIP
+# instead of a local Flutter build, and only after confirming that asset exists
+# and that the SHA-256 below is the one you expect. curl -f fails loudly on a
+# missing asset rather than deploying something unexpected.
 #
 # Requirements in the build environment: curl, sha256sum, unzip, mktemp.
-# (All present in the Netlify Ubuntu build image.)
 #
-# Local use (also what Netlify runs):  bash tools/fetch-pwa.sh
-# The result, ./app/, is gitignored. Manual/CLI deploys must run this first.
+# Local use:  bash tools/fetch-pwa.sh
+#
+# WARNING: this OVERWRITES ./app/ completely.
 set -euo pipefail
 
-PWA_VERSION="1.0.3"
-PWA_ZIP_URL="https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/bjt-trainer-web-1.0.3.zip"
-PWA_SHA256="d17796dad875513ec4a44ffa9336eb18e3fbad5e7ce68d2fb3f0aafea3b4e3ee"
+# Pinned release asset for the 1.0.0 web build (root-content ZIP, no wrapper
+# directory). PWA_SHA256 is the SHA-256 of that asset.
+PWA_VERSION="1.0.0"
+PWA_ZIP_URL="https://github.com/winkhantnyimdy-art/bjt-trainer-website/releases/download/v1.0.0/bjt-trainer-web-1.0.0.zip"
+PWA_SHA256="d5d71184c57e9c74b002ae3972c4ee8ddcc59641fe78abb7fd1585014561d9ad"
 PWA_DIR="app"
 PWA_TMP="$(mktemp /tmp/bjt-pwa.XXXXXX.zip)"
 
