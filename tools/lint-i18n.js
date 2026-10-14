@@ -38,6 +38,7 @@ const PLACEHOLDERS = /CONTACT_EMAIL_TO_BE_ADDED|YOUR-DOMAIN|your-cdn\.example|pl
  * status line, which the install steps tell the learner to wait for. */
 const LATIN_OK = new Set([
   "BJT", "JETRO", "Android", "HTML", "CSS", "JavaScript", "SDK", "Trainer",
+  "PhotoBooth", "Retro", "Film", "Pop",
   "Study", "Progress", "Practice", "Home", "Settings", "Mock", "Exam",
   "Cookie", "Cookies", "No", "of", "span", "data", "config", "version", "u",
   "i18n", "en", "ja", "class", "div", "a", "span", "strong", "p", "id", "href",

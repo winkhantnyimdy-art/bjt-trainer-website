@@ -128,4 +128,16 @@ window.BJT_SITE_CONFIG = {
     en: "September 2026",
     ja: "2026年9月",
   },
+
+  /* ---------------------------------------------------------------- PhotoBooth V2
+   * Android release not yet verified/published. Keep downloadAvailable false
+   * and androidDownloadUrl empty. When a signed APK is published, update these
+   * two values (plus filename/size/SHA-256) and wire a matching button.
+   */
+  photoBoothDownloadAvailable: false,
+  photoBoothAndroidDownloadUrl: "",
+  photoBoothAndroidFileName: "PhotoBooth-1.0.0.apk",
+  photoBoothAndroidFileSizeLabel: "coming soon",
+  photoBoothAndroidFileSha256: "",
+
 };
