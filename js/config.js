@@ -113,7 +113,7 @@ window.BJT_SITE_CONFIG = {
    * see the placeholder token below.
    * Replace with a real address, e.g. "support@example.com".
    */
-  contactEmail: "winkhantnyi.mdy@gamil.com",
+  contactEmail: "winkhantnyi.mdy@gmail.com",
 
   /* Optional: a link to a public source repository or support page. */
   supportUrl: "",
