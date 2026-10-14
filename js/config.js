@@ -113,7 +113,7 @@ window.BJT_SITE_CONFIG = {
    * see the placeholder token below.
    * Replace with a real address, e.g. "support@example.com".
    */
-  contactEmail: "CONTACT_EMAIL_TO_BE_ADDED",
+  contactEmail: "winkhantnyi.mdy@gamil.com",
 
   /* Optional: a link to a public source repository or support page. */
   supportUrl: "",
@@ -134,10 +134,12 @@ window.BJT_SITE_CONFIG = {
    * and androidDownloadUrl empty. When a signed APK is published, update these
    * two values (plus filename/size/SHA-256) and wire a matching button.
    */
-  photoBoothDownloadAvailable: false,
-  photoBoothAndroidDownloadUrl: "",
-  photoBoothAndroidFileName: "PhotoBooth-1.0.0.apk",
-  photoBoothAndroidFileSizeLabel: "coming soon",
-  photoBoothAndroidFileSha256: "",
+  photoBoothDownloadAvailable: true,
+  photoBoothAndroidDownloadUrl:
+    "https://github.com/winkhantnyimdy-art/PhotoBooth/releases/download/v1.0.0/PhotoBooth-v1.0.0-android.apk",
+  photoBoothAndroidFileName: "PhotoBooth-v1.0.0-android.apk",
+  photoBoothAndroidFileSizeLabel: "Early release",
+  photoBoothAndroidFileSha256:
+    "3a8662108a806bbe6f81a11b94107ee373929fdb86224279a64c37714cf3141f",
 
 };

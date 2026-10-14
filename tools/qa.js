@@ -315,8 +315,12 @@ const PROBE = (minTap) => {
           }
         }
 
-        if (r.hasContact && r.contactHidden !== true)
-          fail(vp.name, page, lang, `contact block is not hidden (placeholder would be visible)`);
+        /* The contact block is hidden while the email is a placeholder and
+           revealed only once a real address is configured (js/app.js). */
+        var contactPlaceholder = !CONFIG.contactEmail || /^[A-Z0-9_]+$/.test(String(CONFIG.contactEmail).trim());
+        var expectedContactHidden = contactPlaceholder;
+        if (r.hasContact && r.contactHidden !== expectedContactHidden)
+          fail(vp.name, page, lang, `contact block hidden=${r.contactHidden} (expected ${expectedContactHidden} for ${contactPlaceholder ? "placeholder" : "configured"} email)`);
 
         if (r.smallTaps.length) fail(vp.name, page, lang, `touch target < ${MIN_TAP}px: ${JSON.stringify(r.smallTaps.slice(0, 8))}`);
 
