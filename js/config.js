@@ -136,10 +136,10 @@ window.BJT_SITE_CONFIG = {
    */
   photoBoothDownloadAvailable: true,
   photoBoothAndroidDownloadUrl:
-    "https://github.com/winkhantnyimdy-art/PhotoBooth/releases/download/v1.0.0/PhotoBooth-v1.0.0-android.apk",
-  photoBoothAndroidFileName: "PhotoBooth-v1.0.0-android.apk",
-  photoBoothAndroidFileSizeLabel: "Early release",
+    "https://github.com/winkhantnyimdy-art/PhotoBooth/releases/download/v3.0.0/PhotoBooth-v3.0.0-android.apk",
+  photoBoothAndroidFileName: "PhotoBooth-v3.0.0-android.apk",
+  photoBoothAndroidFileSizeLabel: "52.1 MB",
   photoBoothAndroidFileSha256:
-    "3a8662108a806bbe6f81a11b94107ee373929fdb86224279a64c37714cf3141f",
+    "6fd47ff40da7e7c857d12776ae0f48b6529fc310acff5f47d817a06f15b3d132",
 
 };
