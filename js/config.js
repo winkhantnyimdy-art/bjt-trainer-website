@@ -129,10 +129,9 @@ window.BJT_SITE_CONFIG = {
     ja: "2026年9月",
   },
 
-  /* ---------------------------------------------------------------- PhotoBooth V2
-   * Android release not yet verified/published. Keep downloadAvailable false
-   * and androidDownloadUrl empty. When a signed APK is published, update these
-   * two values (plus filename/size/SHA-256) and wire a matching button.
+  /* ---------------------------------------------------------------- PhotoBooth V3
+   * Published as a signed Android release asset on GitHub. The physical-device
+   * testing disclosure must stay visible until that testing is complete.
    */
   photoBoothDownloadAvailable: true,
   photoBoothAndroidDownloadUrl:
@@ -140,6 +139,6 @@ window.BJT_SITE_CONFIG = {
   photoBoothAndroidFileName: "PhotoBooth-v3.0.0-android.apk",
   photoBoothAndroidFileSizeLabel: "52.1 MB",
   photoBoothAndroidFileSha256:
-    "6fd47ff40da7e7c857d12776ae0f48b6529fc310acff5f47d817a06f15b3d132",
+    "6FD47FF40DA7E7C857D12776AE0F48B6529FC310ACFF5F47D817A06F15B3D132",
 
 };
